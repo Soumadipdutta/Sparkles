@@ -12,3 +12,7 @@ venv/
 # Firebase credentials
 serviceAccountKey.json
 *serviceAccountKey*.json
+
+# Node / React
+node_modules/
+dist/
