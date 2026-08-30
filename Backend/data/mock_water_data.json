@@ -1,0 +1,46 @@
+{
+  "summary": {
+    "overall_water_safety_score": 94,
+    "tests_conducted": 1248,
+    "alerts_triggered": 23,
+    "data_uptime": 99.7
+  },
+
+  "contaminants": [
+    {
+      "parameter": "Arsenic",
+      "value": 0.006,
+      "unit": "mg/L",
+      "safe_limit": 0.01,
+      "status": "Safe"
+    },
+    {
+      "parameter": "Lead",
+      "value": 0.004,
+      "unit": "mg/L",
+      "safe_limit": 0.01,
+      "status": "Safe"
+    },
+    {
+      "parameter": "Iron",
+      "value": 0.18,
+      "unit": "mg/L",
+      "safe_limit": 0.3,
+      "status": "Safe"
+    },
+    {
+      "parameter": "Manganese",
+      "value": 0.08,
+      "unit": "mg/L",
+      "safe_limit": 0.1,
+      "status": "Safe"
+    },
+    {
+      "parameter": "Chromium",
+      "value": 0.03,
+      "unit": "mg/L",
+      "safe_limit": 0.05,
+      "status": "Safe"
+    }
+  ]
+}
