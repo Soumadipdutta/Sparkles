@@ -6,10 +6,10 @@ import { getTranslation, normalizeLanguage } from "../i18n/translations";
 function formatDateTime(dateInput, dateFormat = "DD-MM-YYYY", timeFormat = "12-Hour (AM/PM)") {
   let d = new Date();
   if (dateInput) {
-    if (typeof dateInput === "string" && dateInput.includes("T")) {
+    if (typeof dateInput === "string") {
       const parsed = new Date(dateInput);
       if (!isNaN(parsed.getTime())) d = parsed;
-    } else if (dateInput instanceof Date) {
+    } else if (dateInput instanceof Date && !isNaN(dateInput.getTime())) {
       d = dateInput;
     }
   }
@@ -19,17 +19,24 @@ function formatDateTime(dateInput, dateFormat = "DD-MM-YYYY", timeFormat = "12-H
   const year = d.getFullYear();
 
   let formattedDate = `${day}-${month}-${year}`;
-  if (dateFormat === "MM-DD-YYYY") {
-    formattedDate = `${month}-${day}-${year}`;
-  } else if (dateFormat === "YYYY-MM-DD") {
+
+  const fmt = String(dateFormat || "").toUpperCase();
+  if (fmt.startsWith("YYYY") || fmt.includes("YYYY-MM") || fmt.includes("YYYY/MM")) {
     formattedDate = `${year}-${month}-${day}`;
+  } else if (fmt.startsWith("MM") || fmt.includes("MM-DD") || fmt.includes("MM/DD")) {
+    formattedDate = `${month}-${day}-${year}`;
+  } else if (fmt.includes("MMM")) {
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
+    formattedDate = `${day} ${monthNames[d.getMonth()]} ${year}`;
+  } else {
+    formattedDate = `${day}-${month}-${year}`;
   }
 
   let hours = d.getHours();
   const minutes = String(d.getMinutes()).padStart(2, "0");
   let formattedTime = "";
 
-  if (timeFormat === "24-Hour") {
+  if (timeFormat && timeFormat.includes("24-Hour")) {
     formattedTime = `${String(hours).padStart(2, "0")}:${minutes}`;
   } else {
     const ampm = hours >= 12 ? "PM" : "AM";
@@ -39,6 +46,9 @@ function formatDateTime(dateInput, dateFormat = "DD-MM-YYYY", timeFormat = "12-H
 
   return `${formattedDate}, ${formattedTime}`;
 }
+
+
+
 
 /* ---------- Icons (inline, no deps) ---------- */
 const Icon = ({ path, size = 18, ...p }) => (
@@ -232,15 +242,8 @@ function Sidebar({ active, setActive, open, setOpen, lang }) {
   );
 }
 
-function TopBar({ setOpen, village, dispPref, lang, isDark }) {
-  const [now, setNow] = useState(new Date());
-
-  useEffect(() => {
-    const timer = setInterval(() => setNow(new Date()), 10000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const formattedDateTime = formatDateTime(now, dispPref?.date_format, dispPref?.time_format);
+function TopBar({ setOpen, village, dispPref, lang, isDark, lastUpdatedTime, onRefresh }) {
+  const formattedDateTime = formatDateTime(lastUpdatedTime || new Date(), dispPref?.date_format, dispPref?.time_format);
 
   return (
     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, flexWrap: "wrap", padding: "14px 0", marginBottom: 4 }}>
@@ -256,7 +259,9 @@ function TopBar({ setOpen, village, dispPref, lang, isDark }) {
       <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, color: isDark ? "#94A3B8" : "#667085" }}>
           {getTranslation(lang, "lastUpdated")}: {formattedDateTime}
-          <Icon path={icons.refresh} size={14} color={isDark ? "#64748B" : "#98A2B3"} />
+          <button onClick={onRefresh} style={{ background: "transparent", border: "none", cursor: "pointer", padding: 2, display: "flex" }} title="Refresh now">
+            <Icon path={icons.refresh} size={14} color={isDark ? "#64748B" : "#98A2B3"} />
+          </button>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 6, background: isDark ? "#064E3B" : "#EAF7EE", color: isDark ? "#34D399" : "#1E8E4E", borderRadius: 999, padding: "6px 12px", fontSize: 13, fontWeight: 700 }}>
           <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#22C55E" }} />
@@ -266,6 +271,8 @@ function TopBar({ setOpen, village, dispPref, lang, isDark }) {
     </div>
   );
 }
+
+
 
 function SettingsSidebar({ activeTab, setActiveTab, isDark }) {
   const SETTINGS_NAV = [
@@ -310,25 +317,20 @@ function ThresholdsTable({ thresholds, onEdit, onDelete, onAdd, lang, isDark }) 
   const thresholdsArr = Array.isArray(rawThresholds) ? rawThresholds : typeof rawThresholds === "object" ? Object.values(rawThresholds) : [];
 
   return (
-    <Card isDark={isDark} style={{ padding: 22 }}>
-      <div style={{ fontSize: 15, fontWeight: 700, color: isDark ? "#F8FAFC" : "#1F2937", marginBottom: 6 }}>{getTranslation(lang, "parameterThresholds")}</div>
-      <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12.5, color: isDark ? "#94A3B8" : "#667085", marginBottom: 18 }}>
-        <Icon path={icons.info} size={13} color={isDark ? "#64748B" : "#98A2B3"} />
-        {getTranslation(lang, "parameterThresholdsSub")}
-      </div>
+    <Card isDark={isDark} style={{ padding: 22, display: "flex", flexDirection: "column" }}>
       <div style={{ overflowX: "auto" }}>
-        <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 620 }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 600 }}>
           <thead>
             <tr style={{ borderBottom: isDark ? "1px solid #1E293B" : "1px solid #EEF1F5" }}>
-              {["Parameter", getTranslation(lang, "safe"), getTranslation(lang, "warning"), getTranslation(lang, "unsafe"), "Unit", "Actions"].map((h) => (
-                <th key={h} style={{ textAlign: "left", padding: "10px 12px", fontSize: 11.5, color: isDark ? "#64748B" : "#98A2B3", fontWeight: 700, letterSpacing: "0.03em" }}>{h}</th>
+              {["Parameter", "Safe Limit", "Warning Range", "Unsafe Limit", "Unit", "Actions"].map((h) => (
+                <th key={h} style={{ textAlign: "left", padding: "12px", fontSize: 12, color: isDark ? "#64748B" : "#98A2B3", fontWeight: 700 }}>{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {thresholdsArr.map((t) => (
-              <tr key={t.id || t.param} style={{ borderBottom: isDark ? "1px solid #1E293B" : "1px solid #F5F6F8" }}>
-                <td style={{ padding: "12px", fontSize: 13.5, color: isDark ? "#CBD5E1" : "#344054", fontWeight: 600 }}>{t.param}</td>
+              <tr key={t.id} style={{ borderBottom: isDark ? "1px solid #1E293B" : "1px solid #F5F6F8" }}>
+                <td style={{ padding: "12px", fontSize: 13.5, fontWeight: 600, color: isDark ? "#E2E8F0" : "#344054" }}>{t.param}</td>
                 <td style={{ padding: "12px", fontSize: 13, color: isDark ? "#34D399" : "#1E8E4E" }}>{t.safe}</td>
                 <td style={{ padding: "12px", fontSize: 13, color: isDark ? "#FBBF24" : "#B8730B" }}>{t.warn}</td>
                 <td style={{ padding: "12px", fontSize: 13, color: isDark ? "#FCA5A5" : "#C43B3B" }}>{t.crit}</td>
@@ -348,20 +350,22 @@ function ThresholdsTable({ thresholds, onEdit, onDelete, onAdd, lang, isDark }) 
           </tbody>
         </table>
       </div>
-      <button
-        onClick={onAdd}
-        style={{
-          display: "inline-flex", alignItems: "center", gap: 6, marginTop: 16, background: "transparent",
-          border: "none", color: "#3B82F6", fontSize: 13.5, fontWeight: 700, cursor: "pointer", padding: 0,
-        }}
-      >
-        <Icon path={icons.plus} size={15} /> {getTranslation(lang, "addParameter")}
-      </button>
+      <div style={{ marginTop: "auto", paddingTop: 16, textAlign: "right" }}>
+        <button
+          onClick={onAdd}
+          style={{
+            display: "inline-flex", alignItems: "center", gap: 6, background: "transparent",
+            border: "none", color: "#3B82F6", fontSize: 13.5, fontWeight: 700, cursor: "pointer", padding: 0,
+          }}
+        >
+          <Icon path={icons.plus} size={15} /> {getTranslation(lang, "addParameter")}
+        </button>
+      </div>
     </Card>
   );
 }
 
-export default function Settings({ settings: propSettings, onUpdateSettings: propOnUpdateSettings }) {
+export default function Settings({ settings: propSettings, onUpdateSettings: propOnUpdateSettings, lastUpdatedTime: propLastUpdatedTime, onRefresh: propOnRefresh }) {
   const [active, setActive] = useState("settings");
   const [activeTab, setActiveTab] = useState("general");
   const [open, setOpen] = useState(false);
@@ -428,61 +432,55 @@ export default function Settings({ settings: propSettings, onUpdateSettings: pro
     handleUpdate("thresholds", filtered);
   };
 
-  if (loading) {
-    return <div style={{ padding: 40, fontFamily: "sans-serif", color: "#667085", textAlign: "center" }}>Loading settings...</div>;
-  }
+  const activeSettings = settings || {};
+  const sysInfo = activeSettings.system_info || {};
+  const dispPref = activeSettings.display_preferences || {};
+  const units = activeSettings.measurement_units || {};
+  const alertSet = activeSettings.alert_settings || {};
+  const profile = activeSettings.user_profile || {};
+  const backup = activeSettings.backup_info || {};
 
-  if (error) {
+
+  const rawLang = dispPref.language || "English";
+  const lang = normalizeLanguage(rawLang);
+
+  const displayLangValue = rawLang.includes("Hindi") || rawLang.includes("हिन्दी") ? "हिन्दी (Hindi)"
+                         : rawLang.includes("Bengali") || rawLang.includes("বাংলা") ? "বাংলা (Bengali)"
+                         : "English";
+
+  const themeSetting = dispPref.theme || "Light";
+  const isDark = themeSetting === "Dark" || (themeSetting === "System" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+  const rawThresholds = activeSettings.thresholds || [];
+  const thresholds = Array.isArray(rawThresholds) ? rawThresholds : typeof rawThresholds === "object" ? Object.values(rawThresholds) : [];
+
+  const arsenicThreshold = thresholds.find((t) => String(t?.param || "").toLowerCase().includes("arsenic"));
+
+  if (loading) {
     return (
-      <div style={{ padding: 30, color: "#C43B3B", fontFamily: "sans-serif" }}>
-        <h2 style={{ fontSize: 20, marginBottom: 8 }}>API Connection Error</h2>
-        <p style={{ fontSize: 14, color: "#475467" }}>{error}</p>
-        <p style={{ fontSize: 13, color: "#667085", marginTop: 12 }}>Ensure FastAPI backend is running at <code>http://127.0.0.1:8000</code>.</p>
+      <div style={{ minHeight: "100vh", background: isDark ? "#0B0F19" : "#F6F7F9", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Inter', sans-serif", color: isDark ? "#94A3B8" : "#667085", fontSize: 14 }}>
+        Loading settings...
       </div>
     );
   }
 
-  const activeSettings = propSettings || settings;
-  const sysInfo = activeSettings?.system_info || {};
-  const dispPref = activeSettings?.display_preferences || {};
-  const units = activeSettings?.measurement_units || {};
-  const alertSet = activeSettings?.alert_settings || {};
-  const profile = activeSettings?.user_profile || {};
-  const backup = activeSettings?.backup_info || {};
-
-  const rawLang = dispPref?.language || "English";
-  const lang = normalizeLanguage(rawLang);
-
-  const themeSetting = dispPref?.theme || "Light";
-  const isDark = themeSetting === "Dark" || (themeSetting === "System" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
-
-  const displayLangValue = rawLang.includes("Hindi") || rawLang.includes("हिन्दी") ? "हिन्दी (Hindi)"
-                          : rawLang.includes("Bengali") || rawLang.includes("বাংলা") ? "বাংলা (Bengali)"
-                          : "English";
-
   return (
-    <div style={{ fontFamily: "'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif", background: isDark ? "#0B0F19" : "#F6F7F9", minHeight: "100vh", color: isDark ? "#F8FAFC" : "#101828" }}>
+    <div style={{ fontFamily: "'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif", background: isDark ? "#0B0F19" : "#F6F7F9", color: isDark ? "#F8FAFC" : "#101828", minHeight: "100vh" }}>
       <style>{`
-        html, body { margin: 0; padding: 0; background-color: ${isDark ? "#0B0F19" : "#F6F7F9"}; }
         * { box-sizing: border-box; }
         .layout { display: flex; min-height: 100vh; }
         .sidebar { width: 232px; background: #0C1830; display: flex; flex-direction: column; flex-shrink: 0; position: sticky; top: 0; height: 100vh; }
         .main { flex: 1; min-width: 0; padding: 20px clamp(16px, 3vw, 32px) 40px; }
         .only-mobile { display: none; }
+        .settings-body { display: flex; gap: 20px; flex-wrap: wrap; }
+        .settings-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .sidebar-scrim { display: none; }
-        .settings-body { display: flex; gap: 20px; align-items: flex-start; }
-        .settings-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-        .profile-col { display: flex; flex-direction: column; gap: 18px; flex: 0 0 340px; }
 
         @media (max-width: 980px) {
-          .sidebar { position: fixed; left: -260px; top: 0; z-index: 50; transition: left 0.22s ease; }
+          .sidebar { position: fixed; left: -260px; top: 0; z-index: 50; transition: left 0.22s ease; box-shadow: 0 0 0 rgba(0,0,0,0); }
           .sidebar-open { left: 0; box-shadow: 8px 0 24px rgba(0,0,0,0.25); }
           .only-mobile { display: flex; }
           .sidebar-scrim { display: block !important; }
-          .settings-body { flex-direction: column; }
-          .profile-col { flex: 1 1 auto; width: 100%; }
-        }
-        @media (max-width: 760px) {
           .settings-grid-2 { grid-template-columns: 1fr; }
         }
         @media (max-width: 640px) {
@@ -494,7 +492,7 @@ export default function Settings({ settings: propSettings, onUpdateSettings: pro
         <Sidebar active={active} setActive={setActive} open={open} setOpen={setOpen} lang={lang} />
 
         <main className="main">
-          <TopBar setOpen={setOpen} village={sysInfo.village} dispPref={dispPref} lang={lang} isDark={isDark} />
+          <TopBar setOpen={setOpen} village={sysInfo.village} dispPref={dispPref} lang={lang} isDark={isDark} lastUpdatedTime={propLastUpdatedTime} onRefresh={propOnRefresh} />
 
           <div style={{ marginBottom: 20 }}>
             <h1 style={{ fontSize: 26, fontWeight: 800, color: isDark ? "#F8FAFC" : "#101828", margin: "8px 0 4px" }}>{getTranslation(lang, "settings")}</h1>
@@ -631,55 +629,60 @@ export default function Settings({ settings: propSettings, onUpdateSettings: pro
             </div>
 
             <div className="profile-col">
-              <Card isDark={isDark} style={{ padding: 22 }}>
+              <Card isDark={isDark} style={{ padding: 22, display: "flex", flexDirection: "column" }}>
                 <CardHeader icon={icons.user} isDark={isDark}>{getTranslation(lang, "userProfile")}</CardHeader>
                 <Row label={getTranslation(lang, "name")} value={profile.name} isDark={isDark} />
                 <Row label={getTranslation(lang, "email")} value={profile.email} isDark={isDark} />
                 <Row label={getTranslation(lang, "role")} value={profile.role} isDark={isDark} />
                 <Row label={getTranslation(lang, "phone")} value={profile.phone} isDark={isDark} />
-                <button
-                  onClick={() => {
-                    setDraftProfile({
-                      name: profile.name || "",
-                      email: profile.email || "",
-                      role: profile.role || "",
-                      phone: profile.phone || "",
-                    });
-                    setEditProfileModal(true);
-                  }}
-                  style={{
-                    marginTop: 16, display: "inline-flex", alignItems: "center", gap: 7,
-                    border: isDark ? "1px solid #1E293B" : "1px solid #DCEBFF",
-                    background: isDark ? "#1E293B" : "#EFF6FF",
-                    color: "#3B82F6",
-                    fontSize: 13, fontWeight: 700, padding: "9px 16px", borderRadius: 9, cursor: "pointer",
-                  }}
-                >
-                  <Icon path={icons.edit} size={14} /> {getTranslation(lang, "editProfile")}
-                </button>
+                <div style={{ marginTop: "auto", paddingTop: 16, textAlign: "right" }}>
+                  <button
+                    onClick={() => {
+                      setDraftProfile({
+                        name: profile.name || "",
+                        email: profile.email || "",
+                        role: profile.role || "",
+                        phone: profile.phone || "",
+                      });
+                      setEditProfileModal(true);
+                    }}
+                    style={{
+                      display: "inline-flex", alignItems: "center", gap: 7,
+                      border: isDark ? "1px solid #1E293B" : "1px solid #DCEBFF",
+                      background: isDark ? "#1E293B" : "#EFF6FF",
+                      color: "#3B82F6",
+                      fontSize: 13, fontWeight: 700, padding: "9px 16px", borderRadius: 9, cursor: "pointer",
+                    }}
+                  >
+                    <Icon path={icons.edit} size={14} /> {getTranslation(lang, "editProfile")}
+                  </button>
+                </div>
               </Card>
 
-              <Card isDark={isDark} style={{ padding: 22 }}>
+              <Card isDark={isDark} style={{ padding: 22, display: "flex", flexDirection: "column" }}>
                 <CardHeader icon={icons.cloud} isDark={isDark}>{getTranslation(lang, "dataBackup")}</CardHeader>
                 <Row label={getTranslation(lang, "lastBackup")} value={backup.last_backup} isDark={isDark} />
                 <div style={{ display: "flex", justifyContent: "space-between", padding: "10px 0", fontSize: 13.5, borderBottom: isDark ? "1px solid #1E293B" : "1px solid #F5F6F8" }}>
                   <span style={{ color: isDark ? "#64748B" : "#98A2B3" }}>{getTranslation(lang, "backupStatus")}</span>
                   <span style={{ color: isDark ? "#34D399" : "#1E8E4E", fontWeight: 700 }}>{backup.status || "Successful"}</span>
                 </div>
-                <button
-                  onClick={handleBackup}
-                  style={{
-                    marginTop: 16, display: "inline-flex", alignItems: "center", gap: 7,
-                    border: isDark ? "1px solid #1E293B" : "1px solid #DCEBFF",
-                    background: isDark ? "#1E293B" : "#EFF6FF",
-                    color: "#3B82F6",
-                    fontSize: 13, fontWeight: 700, padding: "9px 16px", borderRadius: 9, cursor: "pointer",
-                  }}
-                >
-                  <Icon path={icons.cloud} size={14} /> {getTranslation(lang, "backupNow")}
-                </button>
-                {backupMsg && <div style={{ marginTop: 8, fontSize: 12, color: "#3B82F6", fontWeight: 600 }}>{backupMsg}</div>}
+                <div style={{ marginTop: "auto", paddingTop: 16, textAlign: "right" }}>
+                  <button
+                    onClick={handleBackup}
+                    style={{
+                      display: "inline-flex", alignItems: "center", gap: 7,
+                      border: isDark ? "1px solid #1E293B" : "1px solid #DCEBFF",
+                      background: isDark ? "#1E293B" : "#EFF6FF",
+                      color: "#3B82F6",
+                      fontSize: 13, fontWeight: 700, padding: "9px 16px", borderRadius: 9, cursor: "pointer",
+                    }}
+                  >
+                    <Icon path={icons.cloud} size={14} /> {getTranslation(lang, "backupNow")}
+                  </button>
+                  {backupMsg && <div style={{ marginTop: 8, fontSize: 12, color: "#3B82F6", fontWeight: 600 }}>{backupMsg}</div>}
+                </div>
               </Card>
+
             </div>
           </div>
 

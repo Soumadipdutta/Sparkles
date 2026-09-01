@@ -6,10 +6,10 @@ import { getTranslation, normalizeLanguage } from "../i18n/translations";
 function formatDateTime(dateInput, dateFormat = "DD-MM-YYYY", timeFormat = "12-Hour (AM/PM)") {
   let d = new Date();
   if (dateInput) {
-    if (typeof dateInput === "string" && dateInput.includes("T")) {
+    if (typeof dateInput === "string") {
       const parsed = new Date(dateInput);
       if (!isNaN(parsed.getTime())) d = parsed;
-    } else if (dateInput instanceof Date) {
+    } else if (dateInput instanceof Date && !isNaN(dateInput.getTime())) {
       d = dateInput;
     }
   }
@@ -18,18 +18,25 @@ function formatDateTime(dateInput, dateFormat = "DD-MM-YYYY", timeFormat = "12-H
   const month = String(d.getMonth() + 1).padStart(2, "0");
   const year = d.getFullYear();
 
-  let formattedDate = `${day}-${month}-${year}`; // DD-MM-YYYY default
-  if (dateFormat === "MM-DD-YYYY") {
-    formattedDate = `${month}-${day}-${year}`;
-  } else if (dateFormat === "YYYY-MM-DD") {
+  let formattedDate = `${day}-${month}-${year}`;
+
+  const fmt = String(dateFormat || "").toUpperCase();
+  if (fmt.startsWith("YYYY") || fmt.includes("YYYY-MM") || fmt.includes("YYYY/MM")) {
     formattedDate = `${year}-${month}-${day}`;
+  } else if (fmt.startsWith("MM") || fmt.includes("MM-DD") || fmt.includes("MM/DD")) {
+    formattedDate = `${month}-${day}-${year}`;
+  } else if (fmt.includes("MMM")) {
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
+    formattedDate = `${day} ${monthNames[d.getMonth()]} ${year}`;
+  } else {
+    formattedDate = `${day}-${month}-${year}`;
   }
 
   let hours = d.getHours();
   const minutes = String(d.getMinutes()).padStart(2, "0");
   let formattedTime = "";
 
-  if (timeFormat === "24-Hour") {
+  if (timeFormat && timeFormat.includes("24-Hour")) {
     formattedTime = `${String(hours).padStart(2, "0")}:${minutes}`;
   } else {
     const ampm = hours >= 12 ? "PM" : "AM";
@@ -39,6 +46,8 @@ function formatDateTime(dateInput, dateFormat = "DD-MM-YYYY", timeFormat = "12-H
 
   return `${formattedDate}, ${formattedTime}`;
 }
+
+
 
 function formatTimeOnly(timeStr, timeFormat = "12-Hour (AM/PM)") {
   if (!timeStr) return "";
@@ -260,10 +269,9 @@ const iconBtnStyle = {
   padding: 6, borderRadius: 8, display: "flex",
 };
 
-function TopBar({ setOpen, dashboard, sysInfo, dispPref, lang, isDark }) {
+function TopBar({ setOpen, dashboard, sysInfo, dispPref, lang, isDark, lastUpdatedTime, onRefresh }) {
   const village = sysInfo?.village || dashboard?.info?.village || dashboard?.info?.name || "XYZ";
-  const rawLastUpdated = dashboard?.system?.last_updated;
-  const formattedDateTime = formatDateTime(rawLastUpdated || new Date(), dispPref?.date_format, dispPref?.time_format);
+  const formattedDateTime = formatDateTime(lastUpdatedTime || new Date(), dispPref?.date_format, dispPref?.time_format);
   const isOnline = dashboard?.system?.online ?? true;
 
   return (
@@ -287,8 +295,11 @@ function TopBar({ setOpen, dashboard, sysInfo, dispPref, lang, isDark }) {
       <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, color: isDark ? "#94A3B8" : "#667085" }}>
           {getTranslation(lang, "lastUpdated")}: {formattedDateTime}
-          <Icon path={icons.refresh} size={14} color={isDark ? "#64748B" : "#98A2B3"} />
+          <button onClick={onRefresh} style={{ background: "transparent", border: "none", cursor: "pointer", padding: 2, display: "flex" }} title="Refresh data now">
+            <Icon path={icons.refresh} size={14} color={isDark ? "#64748B" : "#98A2B3"} />
+          </button>
         </div>
+
         <div style={{
           display: "flex", alignItems: "center", gap: 6,
           background: isOnline ? (isDark ? "#064E3B" : "#EAF7EE") : (isDark ? "#7F1D1D" : "#FDECEC"),
@@ -576,8 +587,10 @@ function TrendChart({ points, tempUnit, isDark }) {
 
   if (!trendPoints || trendPoints.length === 0) {
     return (
-      <div style={{ height: 220, display: "flex", alignItems: "center", justifyContent: "center", color: isDark ? "#64748B" : "#98A2B3", fontSize: 13 }}>
-        No trend data available for this period.
+      <div style={{ height: 220, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", color: isDark ? "#64748B" : "#98A2B3", fontSize: 13, textAlign: "center", padding: 20 }}>
+        <Icon path={icons.info} size={24} color={isDark ? "#64748B" : "#98A2B3"} style={{ marginBottom: 8 }} />
+        <span>No trend data available for this period.</span>
+        <span style={{ fontSize: 12, marginTop: 4, opacity: 0.8 }}>Insufficient historical readings recorded. Graph will automatically plot as soon as data is logged.</span>
       </div>
     );
   }
@@ -603,7 +616,7 @@ function TrendChart({ points, tempUnit, isDark }) {
   const scaleLeft = (v) => padT + innerH - ((v || 0) / 10) * innerH;
   const scaleRight = (v) => padT + innerH - ((v || 0) / 800) * innerH;
   const scaleTemp = (v) => {
-    const maxTemp = isFahrenheit ? 100 : 40;
+    const maxTemp = isFahrenheit ? 100 : 50;
     return padT + innerH - ((v || 0) / maxTemp) * innerH;
   };
 
@@ -643,7 +656,8 @@ function TrendCard({ dashboard, tempUnit, lang, isDark }) {
   const trendsObj = dashboard?.trends || {};
   const rawPoints = range === "24H" ? trendsObj.last_24h
                : range === "7D" ? trendsObj.last_7d
-               : trendsObj.last_30d;
+               : range === "30D" ? trendsObj.last_30d
+               : trendsObj.custom;
 
   const points = Array.isArray(rawPoints) ? rawPoints : typeof rawPoints === "object" ? Object.values(rawPoints || {}) : [];
 
@@ -652,7 +666,7 @@ function TrendCard({ dashboard, tempUnit, lang, isDark }) {
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 10, marginBottom: 4 }}>
         <SectionTitle isDark={isDark}>{getTranslation(lang, "waterQualityTrend")}</SectionTitle>
         <div style={{ display: "flex", gap: 4, background: isDark ? "#1E293B" : "#F5F6F8", borderRadius: 8, padding: 3 }}>
-          {["24H", "7D", "30D"].map((r) => (
+          {["24H", "7D", "30D", "Custom"].map((r) => (
             <button
               key={r}
               onClick={() => setRange(r)}
@@ -668,6 +682,7 @@ function TrendCard({ dashboard, tempUnit, lang, isDark }) {
           ))}
         </div>
       </div>
+
       <div style={{ display: "flex", gap: 16, fontSize: 12, color: isDark ? "#94A3B8" : "#667085", marginBottom: 10, flexWrap: "wrap" }}>
         <span style={{ display: "flex", alignItems: "center", gap: 5 }}><i style={{ width: 8, height: 8, borderRadius: "50%", background: "#3B82F6", display: "inline-block" }} />Turbidity (NTU)</span>
         <span style={{ display: "flex", alignItems: "center", gap: 5 }}><i style={{ width: 8, height: 8, borderRadius: "50%", background: "#10B981", display: "inline-block" }} />TDS (ppm)</span>
@@ -760,7 +775,7 @@ function FilterHealth({ filters, lang, isDark }) {
   ];
 
   return (
-    <Card isDark={isDark} style={{ padding: 22, flex: "1 1 320px" }}>
+    <Card isDark={isDark} style={{ padding: 22, flex: "1 1 320px", display: "flex", flexDirection: "column" }}>
       <SectionTitle isDark={isDark}>{getTranslation(lang, "filterHealth")}</SectionTitle>
       <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
         {items.map((f) => (
@@ -784,9 +799,11 @@ function FilterHealth({ filters, lang, isDark }) {
           </div>
         ))}
       </div>
-      <a href="#" style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 13, color: "#3B82F6", fontWeight: 600, textDecoration: "none", marginTop: 18 }}>
-        {getTranslation(lang, "viewMaintenance")} <Icon path={icons.arrowRight} size={13} />
-      </a>
+      <div style={{ marginTop: "auto", paddingTop: 18, textAlign: "right" }}>
+        <a href="#" style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 13, color: "#3B82F6", fontWeight: 600, textDecoration: "none" }}>
+          {getTranslation(lang, "viewMaintenance")} <Icon path={icons.arrowRight} size={13} />
+        </a>
+      </div>
     </Card>
   );
 }
@@ -804,9 +821,9 @@ function RiskCard({ risk, lang, isDark }) {
   const keyFindings = Array.isArray(rawFindings) ? rawFindings : typeof rawFindings === "object" ? Object.values(rawFindings) : [];
 
   return (
-    <Card isDark={isDark} style={{ padding: 22, flex: "1 1 420px" }}>
+    <Card isDark={isDark} style={{ padding: 22, flex: "1 1 420px", display: "flex", flexDirection: "column" }}>
       <SectionTitle isDark={isDark}>{getTranslation(lang, "waterRiskAwareness")}</SectionTitle>
-      <div className="risk-grid">
+      <div className="risk-grid" style={{ flex: 1 }}>
         <div style={{ background: isDark ? "#1E293B" : "#F9FAFB", borderRadius: 12, padding: 16 }}>
           <div style={{ fontSize: 12, color: isDark ? "#64748B" : "#98A2B3", marginBottom: 8 }}>{getTranslation(lang, "currentAssessment")}</div>
           <div style={{ marginBottom: 10 }}><Pill tone={getTone(riskLevel)} isDark={isDark}>{String(riskLevel).toUpperCase()} CONTAMINATION RISK</Pill></div>
@@ -817,7 +834,7 @@ function RiskCard({ risk, lang, isDark }) {
             {getTranslation(lang, "riskIndicatorNote")}
           </p>
         </div>
-        <div>
+        <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ fontSize: 12, color: isDark ? "#64748B" : "#98A2B3", marginBottom: 10 }}>{getTranslation(lang, "keyFindings")}</div>
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             {keyFindings.map((f, i) => {
@@ -835,10 +852,12 @@ function RiskCard({ risk, lang, isDark }) {
               );
             })}
           </div>
-          <a href="#" style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 13, color: "#3B82F6", fontWeight: 600, textDecoration: "none", marginTop: 14 }}>
-            {getTranslation(lang, "viewDetailedRisk")} <Icon path={icons.arrowRight} size={13} />
-          </a>
         </div>
+      </div>
+      <div style={{ marginTop: "auto", paddingTop: 14, textAlign: "right" }}>
+        <a href="#" style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 13, color: "#3B82F6", fontWeight: 600, textDecoration: "none" }}>
+          {getTranslation(lang, "viewDetailedRisk")} <Icon path={icons.arrowRight} size={13} />
+        </a>
       </div>
     </Card>
   );
@@ -846,7 +865,7 @@ function RiskCard({ risk, lang, isDark }) {
 
 function BottomInfoCard({ icon, iconBg, iconColor, title, body, linkLabel, isDark }) {
   return (
-    <Card isDark={isDark} style={{ padding: 20, flex: "1 1 280px" }}>
+    <Card isDark={isDark} style={{ padding: 20, flex: "1 1 280px", display: "flex", flexDirection: "column" }}>
       <div style={{
         width: 34, height: 34, borderRadius: 10, background: isDark ? "#1E293B" : iconBg,
         display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 14,
@@ -855,14 +874,17 @@ function BottomInfoCard({ icon, iconBg, iconColor, title, body, linkLabel, isDar
       </div>
       <div style={{ fontSize: 13.5, fontWeight: 700, color: isDark ? "#F8FAFC" : "#1F2937", marginBottom: 8 }}>{title}</div>
       <p style={{ fontSize: 12.5, color: isDark ? "#94A3B8" : "#667085", lineHeight: 1.55, margin: "0 0 12px" }}>{body}</p>
-      <a href="#" style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 12.5, color: "#3B82F6", fontWeight: 600, textDecoration: "none" }}>
-        {linkLabel} <Icon path={icons.arrowRight} size={12} />
-      </a>
+      <div style={{ marginTop: "auto", paddingTop: 12, textAlign: "right" }}>
+        <a href="#" style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 12.5, color: "#3B82F6", fontWeight: 600, textDecoration: "none" }}>
+          {linkLabel} <Icon path={icons.arrowRight} size={12} />
+        </a>
+      </div>
     </Card>
   );
 }
 
-export default function Dashboard({ dashboard: propDashboard, settings: propSettings }) {
+
+export default function Dashboard({ dashboard: propDashboard, settings: propSettings, lastUpdatedTime: propLastUpdatedTime, onRefresh: propOnRefresh }) {
   const [dashboard, setDashboard] = useState(propDashboard || null);
   const [settings, setSettings] = useState(propSettings || null);
   const [error, setError] = useState(null);
@@ -888,6 +910,7 @@ export default function Dashboard({ dashboard: propDashboard, settings: propSett
 
   const activeSettings = propSettings || settings;
   const activeDashboard = propDashboard || dashboard;
+  const activeLastUpdatedTime = propLastUpdatedTime || new Date();
 
   const rawLang = activeSettings?.display_preferences?.language || "English";
   const lang = normalizeLanguage(rawLang);
@@ -895,18 +918,9 @@ export default function Dashboard({ dashboard: propDashboard, settings: propSett
   const themeSetting = activeSettings?.display_preferences?.theme || "Light";
   const isDark = themeSetting === "Dark" || (themeSetting === "System" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
 
-  useEffect(() => {
-    const refreshText = activeSettings?.display_preferences?.refresh_interval || "1 Minute";
-    let intervalMs = 60000;
-    if (refreshText.includes("5")) intervalMs = 5 * 60000;
-    else if (refreshText.includes("15")) intervalMs = 15 * 60000;
 
-    const timer = setInterval(() => {
-      fetchDashboardData().then((dash) => setDashboard(dash)).catch(() => {});
-    }, intervalMs);
 
-    return () => clearInterval(timer);
-  }, [activeSettings?.display_preferences?.refresh_interval]);
+
 
   if (error) {
     return (
@@ -920,7 +934,28 @@ export default function Dashboard({ dashboard: propDashboard, settings: propSett
     );
   }
 
+  if (!activeDashboard) {
+    return (
+      <div style={{
+        minHeight: "100vh",
+        background: isDark ? "#0B0F19" : "#F6F7F9",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontFamily: "'Inter', sans-serif",
+        color: isDark ? "#94A3B8" : "#667085",
+        fontSize: 14,
+      }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <span style={{ width: 10, height: 10, borderRadius: "50%", background: "#2563EB" }} />
+          Loading dashboard data...
+        </div>
+      </div>
+    );
+  }
+
   const wq = activeDashboard?.water_quality || {};
+
   const units = activeSettings?.measurement_units || {};
   const sysInfo = activeSettings?.system_info || {};
   const dispPref = activeSettings?.display_preferences || {};
@@ -992,7 +1027,9 @@ export default function Dashboard({ dashboard: propDashboard, settings: propSett
         <Sidebar active={active} setActive={setActive} open={open} setOpen={setOpen} lang={lang} />
 
         <main className="main">
-          <TopBar setOpen={setOpen} dashboard={activeDashboard} sysInfo={sysInfo} dispPref={dispPref} lang={lang} isDark={isDark} />
+          <TopBar setOpen={setOpen} dashboard={activeDashboard} sysInfo={sysInfo} dispPref={dispPref} lang={lang} isDark={isDark} lastUpdatedTime={activeLastUpdatedTime} onRefresh={propOnRefresh} />
+
+
 
           <div className="top-cards-row" style={{ marginBottom: 16 }}>
             <ScoreCard dashboard={activeDashboard} lang={lang} isDark={isDark} />

@@ -1,22 +1,28 @@
 # Python
 __pycache__/
+**/__pycache__/
 *.py[cod]
 *.pyo
 
 # Virtual environment
 venv/
 .venv/
+**/venv/
+**/.venv/
 
 # Environment variables
 .env
 
 # Node
 node_modules/
+**/node_modules/
 
-# # Frontend build
-# dist/
-# build/
+# Frontend build
+dist/
+**/dist/
+build/
+**/build/
 
 # IDE
 .vscode/
-# .idea/
+.idea/

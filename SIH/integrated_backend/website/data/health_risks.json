@@ -1,0 +1,10 @@
+{
+  "pm25": {
+    "unit": "µg/m³",
+    "safe_threshold": 60
+  },
+  "pm10": {
+    "unit": "µg/m³",
+    "safe_threshold": 100
+  }
+}

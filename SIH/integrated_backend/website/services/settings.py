@@ -12,7 +12,8 @@ DEFAULT_SETTINGS = {
     "display_preferences": {
         "language": "English",
         "theme": "Light",
-        "date_format": "DD MMM YYYY",
+        "date_format": "DD-MM-YYYY",
+
         "time_format": "12-Hour (AM/PM)",
         "refresh_interval": "1 Minute"
     },
