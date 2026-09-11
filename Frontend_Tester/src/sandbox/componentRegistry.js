@@ -1,3 +1,4 @@
+import AnalyticsReports from '../test_components/toyam_analytics_and_reports_updated';
 import StatewideOverviewPreview from '../test_components/StatewideOverviewPreview';
 import ToyamDashboard from '../test_components/toyam-dashboard';
 import ToyamReports from '../test_components/toyam-reports';
@@ -13,13 +14,22 @@ import ToyamSettings from '../test_components/toyam-settings';
  */
 export const registeredComponents = [
   {
+    id: 'analytics-reports-v1',
+    title: 'Analytics & Reports (Updated)',
+    category: 'Dashboards',
+    version: 'v1.0',
+    description: 'Analytics, report logs, export options, and historical water metrics chart.',
+    component: AnalyticsReports,
+    badge: 'New Candidate'
+  },
+  {
     id: 'statewide-overview-preview',
     title: 'Statewide Overview Preview',
     category: 'Dashboards',
     version: 'v1.0',
     description: 'Self-contained preview build of the Statewide Overview dashboard.',
     component: StatewideOverviewPreview,
-    badge: 'New Candidate'
+    badge: 'Candidate'
   },
   {
     id: 'toyam-dashboard-v1',
@@ -49,4 +59,5 @@ export const registeredComponents = [
     badge: 'Candidate'
   }
 ];
+
 
