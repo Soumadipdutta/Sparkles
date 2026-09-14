@@ -88,28 +88,43 @@ def download_report(
     end_date: str = "",
     data_source: str = "All Sources",
 ):
-    summary_result = get_report_summary()
-    contaminants_result = get_contaminants()
-    trends_result = get_trends()
-    heatmap_result = get_heatmap()
+    if "Statewide" in report_type or "Executive" in report_type:
+        from website.services.dashboard import get_statewide_dashboard_data
+        from website.services.report_download_service import generate_statewide_executive_summary_report
+        statewide_data = get_statewide_dashboard_data()
+        pdf = generate_statewide_executive_summary_report(
+            statewide_data=statewide_data,
+            report_type=report_type,
+            time_range=time_range,
+            start_date=start_date,
+            end_date=end_date,
+            data_source=data_source,
+        )
+        filename = "toyam_statewide_executive_summary.pdf"
+    else:
+        summary_result = get_report_summary()
+        contaminants_result = get_contaminants()
+        trends_result = get_trends()
+        heatmap_result = get_heatmap()
 
-    pdf = generate_water_quality_report(
-        summary=summary_result["data"],
-        contaminants=contaminants_result["data"],
-        trends=trends_result["data"],
-        heatmap=heatmap_result["data"],
-        report_type=report_type,
-        time_range=time_range,
-        start_date=start_date,
-        end_date=end_date,
-        data_source=data_source,
-    )
+        pdf = generate_water_quality_report(
+            summary=summary_result["data"],
+            contaminants=contaminants_result["data"],
+            trends=trends_result["data"],
+            heatmap=heatmap_result["data"],
+            report_type=report_type,
+            time_range=time_range,
+            start_date=start_date,
+            end_date=end_date,
+            data_source=data_source,
+        )
+        filename = "toyam_water_quality_report.pdf"
 
     return StreamingResponse(
         pdf,
         media_type="application/pdf",
         headers={
-            "Content-Disposition": "attachment; filename=toyam_water_quality_report.pdf"
+            "Content-Disposition": f"attachment; filename={filename}"
         },
     )
 

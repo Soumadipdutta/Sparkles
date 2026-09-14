@@ -23,3 +23,14 @@ app.add_middleware(
 @app.get("/")
 def root():
     return {"message": "Smart Water System API"}
+
+# Reload trigger complete 45 plants export
+
+
+
+
+
+
+
+
+

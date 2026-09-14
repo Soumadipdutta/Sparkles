@@ -264,7 +264,7 @@ function RichContaminantCard({ name, ceiling, val, unit, axisMax, note, icon, to
   );
 }
 
-export default function StatewideOverviewPreview() {
+export default function StatewideOverview() {
   const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [standard, setStandard] = useState("BIS"); // "BIS" or "WHO"

@@ -1,0 +1,5260 @@
+{
+  "devices": {
+    "JH-DHN-01": {
+      "info": {
+        "name": "Jharia Colliery Sector 4",
+        "district": "Dhanbad Mining Belt",
+        "scada_channel": "SCADA CH: 09",
+        "position": {
+          "x": 53,
+          "y": 49
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "cutoff",
+        "status_label": "CRITICAL CUTOFF",
+        "side_label": "AUTO-HALTED",
+        "tone": "#ffb4ab",
+        "tone_bg": "rgba(255,180,171,0.15)",
+        "solenoid_shutoff_active": true
+      },
+      "spotlight": {
+        "pb": "0.042 ppm",
+        "ph": "5.8 pH",
+        "tds": "680 ppm",
+        "solenoid_shutoff_active": true,
+        "scada_channel": "SCADA CH: 09"
+      },
+      "metrics": [
+        {
+          "label": "Lead (Pb) Concentration",
+          "value": "0.042 ppm (Limit: 0.01)"
+        },
+        {
+          "label": "Solenoid Gate Valve",
+          "value": "CLOSED (0 L/min)"
+        }
+      ]
+    },
+    "JH-ESB-02": {
+      "info": {
+        "name": "Ghatsila Mining Outpost",
+        "district": "East Singhbhum",
+        "scada_channel": "SCADA CH: 14",
+        "position": {
+          "x": 79,
+          "y": 74
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "alert",
+        "status_label": "ELEVATED METALS",
+        "side_label": "WARNING",
+        "tone": "#7bd0ff",
+        "tone_bg": "rgba(123,208,255,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "6.6 pH",
+        "tds": "410 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 14"
+      },
+      "metrics": [
+        {
+          "label": "Iron (Fe)",
+          "value": "0.38 ppm"
+        },
+        {
+          "label": "pH Value",
+          "value": "6.6 pH"
+        },
+        {
+          "label": "Discharge",
+          "value": "390 L/hr"
+        }
+      ]
+    },
+    "JH-BOK-03": {
+      "info": {
+        "name": "Bermo Coal Belt Plant #02",
+        "district": "Bokaro Industrial Zone",
+        "scada_channel": "SCADA CH: 02",
+        "position": {
+          "x": 61,
+          "y": 57
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "RO ACTIVE",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.1 pH",
+        "tds": "190 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 02"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.1 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "190 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.25 NTU"
+        }
+      ]
+    },
+    "JH-DHN-04": {
+      "info": {
+        "name": "Topchanchi Rural Unit #01",
+        "district": "Dhanbad Rural",
+        "scada_channel": "SCADA CH: 01",
+        "position": {
+          "x": 70,
+          "y": 50
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "OPTIMAL",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.2 pH",
+        "tds": "205 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 01"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.2 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "205 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.3 NTU"
+        }
+      ]
+    },
+    "JH-RMG-05": {
+      "info": {
+        "name": "Patratu Basin Unit #05",
+        "district": "Ramgarh",
+        "scada_channel": "SCADA CH: 05",
+        "position": {
+          "x": 41,
+          "y": 67
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "UV DISINFECTION",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.3 pH",
+        "tds": "220 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 05"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.3 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "220 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.15 NTU"
+        }
+      ]
+    },
+    "JH-HZB-06": {
+      "info": {
+        "name": "Hazaribagh Coal Washing Unit #09",
+        "district": "Hazaribagh Mining Sector",
+        "scada_channel": "SCADA CH: 08",
+        "position": {
+          "x": 43,
+          "y": 26
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "cutoff",
+        "status_label": "CRITICAL CUTOFF",
+        "side_label": "AUTO-HALTED",
+        "tone": "#ffb4ab",
+        "tone_bg": "rgba(255,180,171,0.15)",
+        "solenoid_shutoff_active": true
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "5.5 pH",
+        "tds": "710 ppm",
+        "solenoid_shutoff_active": true,
+        "scada_channel": "SCADA CH: 08"
+      },
+      "metrics": [
+        {
+          "label": "Arsenic (As) Concentration",
+          "value": "0.035 ppm (Limit: 0.01)"
+        },
+        {
+          "label": "Solenoid Gate Valve",
+          "value": "CLOSED (0 L/min)"
+        }
+      ]
+    },
+    "JH-PAL-07": {
+      "info": {
+        "name": "Palamu Station #03",
+        "district": "Palamu Mine Runoff",
+        "scada_channel": "SCADA CH: 03",
+        "position": {
+          "x": 30,
+          "y": 41
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "alert",
+        "status_label": "HIGH FLUORIDE",
+        "side_label": "WARNING",
+        "tone": "#7bd0ff",
+        "tone_bg": "rgba(123,208,255,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "6.8 pH",
+        "tds": "490 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 03"
+      },
+      "metrics": [
+        {
+          "label": "Fluoride (F-)",
+          "value": "1.45 ppm"
+        },
+        {
+          "label": "pH Value",
+          "value": "6.8 pH"
+        },
+        {
+          "label": "Discharge",
+          "value": "410 L/hr"
+        }
+      ]
+    },
+    "JH-RNC-08": {
+      "info": {
+        "name": "Ranchi Sub-Basin Plant #01",
+        "district": "Ranchi Urban Basin",
+        "scada_channel": "SCADA CH: 11",
+        "position": {
+          "x": 30,
+          "y": 75
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "UV DISINFECTION",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.1 pH",
+        "tds": "160 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 11"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.1 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "160 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.3 NTU"
+        }
+      ]
+    },
+    "JH-WSB-09": {
+      "info": {
+        "name": "Chaibasa Mining Station #04",
+        "district": "West Singhbhum Outpost",
+        "scada_channel": "SCADA CH: 17",
+        "position": {
+          "x": 67,
+          "y": 76
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "RO ACTIVE",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.2 pH",
+        "tds": "175 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 17"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.2 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "175 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.15 NTU"
+        }
+      ]
+    },
+    "JH-GRD-10": {
+      "info": {
+        "name": "Giridih Sector 2 Purification",
+        "district": "Giridih Colliery Belt",
+        "scada_channel": "SCADA CH: 06",
+        "position": {
+          "x": 62,
+          "y": 37
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "OPTIMAL",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.3 pH",
+        "tds": "190 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 06"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.3 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "190 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.2 NTU"
+        }
+      ]
+    },
+    "JH-DGH-11": {
+      "info": {
+        "name": "Deoghar Reservoir Probe #01",
+        "district": "Deoghar Water Works",
+        "scada_channel": "SCADA CH: 19",
+        "position": {
+          "x": 64,
+          "y": 15
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "UV DISINFECTION",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "6.9 pH",
+        "tds": "205 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 19"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "6.9 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "205 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.25 NTU"
+        }
+      ]
+    },
+    "JH-DMK-12": {
+      "info": {
+        "name": "Dumka Rural Outpost #03",
+        "district": "Dumka Tribal Sector",
+        "scada_channel": "SCADA CH: 22",
+        "position": {
+          "x": 79,
+          "y": 34
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "RO ACTIVE",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.0 pH",
+        "tds": "220 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 22"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.0 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "220 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.3 NTU"
+        }
+      ]
+    },
+    "JH-KDR-13": {
+      "info": {
+        "name": "Jhumri Telaiya Station #02",
+        "district": "Koderma Mining Belt",
+        "scada_channel": "SCADA CH: 07",
+        "position": {
+          "x": 49,
+          "y": 37
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "OPTIMAL",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.1 pH",
+        "tds": "235 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 07"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.1 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "235 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.15 NTU"
+        }
+      ]
+    },
+    "JH-CTR-14": {
+      "info": {
+        "name": "Chatra Runoff Monitoring Unit",
+        "district": "Chatra Catchment Zone",
+        "scada_channel": "SCADA CH: 12",
+        "position": {
+          "x": 42,
+          "y": 25
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "UV DISINFECTION",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.2 pH",
+        "tds": "250 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 12"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.2 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "250 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.2 NTU"
+        }
+      ]
+    },
+    "JH-LTH-15": {
+      "info": {
+        "name": "Chandwa Industrial Outpost",
+        "district": "Latehar Forest Station",
+        "scada_channel": "SCADA CH: 15",
+        "position": {
+          "x": 21,
+          "y": 60
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "RO ACTIVE",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.3 pH",
+        "tds": "160 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 15"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.3 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "160 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.25 NTU"
+        }
+      ]
+    },
+    "JH-DHN-16": {
+      "info": {
+        "name": "Sindri Fertilizer Zone #03",
+        "district": "Dhanbad Mining Belt",
+        "scada_channel": "SCADA CH: 09",
+        "position": {
+          "x": 66,
+          "y": 52
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "OPTIMAL",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "6.9 pH",
+        "tds": "175 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 09"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "6.9 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "175 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.3 NTU"
+        }
+      ]
+    },
+    "JH-ESB-17": {
+      "info": {
+        "name": "Katras Coal Seam Station #02",
+        "district": "East Singhbhum",
+        "scada_channel": "SCADA CH: 14",
+        "position": {
+          "x": 88,
+          "y": 77
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "UV DISINFECTION",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.0 pH",
+        "tds": "190 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 14"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.0 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "190 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.15 NTU"
+        }
+      ]
+    },
+    "JH-BOK-18": {
+      "info": {
+        "name": "Nirsa Border Monitoring Probe",
+        "district": "Bokaro Industrial Zone",
+        "scada_channel": "SCADA CH: 02",
+        "position": {
+          "x": 51,
+          "y": 60
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "RO ACTIVE",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.1 pH",
+        "tds": "205 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 02"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.1 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "205 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.2 NTU"
+        }
+      ]
+    },
+    "JH-DHN-19": {
+      "info": {
+        "name": "Chandrapura Thermal Station #01",
+        "district": "Dhanbad Rural",
+        "scada_channel": "SCADA CH: 01",
+        "position": {
+          "x": 60,
+          "y": 53
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "OPTIMAL",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.2 pH",
+        "tds": "220 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 01"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.2 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "220 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.25 NTU"
+        }
+      ]
+    },
+    "JH-RMG-20": {
+      "info": {
+        "name": "Phusro Industrial Outpost #04",
+        "district": "Ramgarh",
+        "scada_channel": "SCADA CH: 05",
+        "position": {
+          "x": 54,
+          "y": 70
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "UV DISINFECTION",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.3 pH",
+        "tds": "235 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 05"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.3 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "235 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.3 NTU"
+        }
+      ]
+    },
+    "JH-HZB-21": {
+      "info": {
+        "name": "Gomoh Junction Water Station",
+        "district": "Hazaribagh Mining Sector",
+        "scada_channel": "SCADA CH: 08",
+        "position": {
+          "x": 33,
+          "y": 29
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "RO ACTIVE",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "6.9 pH",
+        "tds": "250 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 08"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "6.9 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "250 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.15 NTU"
+        }
+      ]
+    },
+    "JH-PAL-22": {
+      "info": {
+        "name": "Barkakana SCADA Node #03",
+        "district": "Palamu Mine Runoff",
+        "scada_channel": "SCADA CH: 03",
+        "position": {
+          "x": 20,
+          "y": 44
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "cutoff",
+        "status_label": "CRITICAL CUTOFF",
+        "side_label": "AUTO-HALTED",
+        "tone": "#ffb4ab",
+        "tone_bg": "rgba(255,180,171,0.15)",
+        "solenoid_shutoff_active": true
+      },
+      "spotlight": {
+        "pb": "0.028 ppm",
+        "ph": "4.8 pH",
+        "tds": "820 ppm",
+        "solenoid_shutoff_active": true,
+        "scada_channel": "SCADA CH: 03"
+      },
+      "metrics": [
+        {
+          "label": "Acid Mine Drainage",
+          "value": "pH 4.8 (Limit: 6.5)"
+        },
+        {
+          "label": "Solenoid Gate Valve",
+          "value": "CLOSED (0 L/min)"
+        }
+      ]
+    },
+    "JH-RNC-23": {
+      "info": {
+        "name": "Garga Dam Water Intake",
+        "district": "Ranchi Urban Basin",
+        "scada_channel": "SCADA CH: 11",
+        "position": {
+          "x": 43,
+          "y": 78
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "UV DISINFECTION",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.1 pH",
+        "tds": "175 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 11"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.1 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "175 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.25 NTU"
+        }
+      ]
+    },
+    "JH-WSB-24": {
+      "info": {
+        "name": "Tenughat Reservoir Probe #02",
+        "district": "West Singhbhum Outpost",
+        "scada_channel": "SCADA CH: 17",
+        "position": {
+          "x": 57,
+          "y": 79
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "RO ACTIVE",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.2 pH",
+        "tds": "190 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 17"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.2 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "190 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.3 NTU"
+        }
+      ]
+    },
+    "JH-GRD-25": {
+      "info": {
+        "name": "Dhurwa Dam Filter Station #01",
+        "district": "Giridih Colliery Belt",
+        "scada_channel": "SCADA CH: 06",
+        "position": {
+          "x": 52,
+          "y": 40
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "OPTIMAL",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.3 pH",
+        "tds": "205 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 06"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.3 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "205 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.15 NTU"
+        }
+      ]
+    },
+    "JH-DGH-26": {
+      "info": {
+        "name": "Kanke Reservoir Monitoring Unit",
+        "district": "Deoghar Water Works",
+        "scada_channel": "SCADA CH: 19",
+        "position": {
+          "x": 77,
+          "y": 17
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "UV DISINFECTION",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "6.9 pH",
+        "tds": "220 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 19"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "6.9 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "220 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.2 NTU"
+        }
+      ]
+    },
+    "JH-DMK-27": {
+      "info": {
+        "name": "Hatia Dam Filtration Plant",
+        "district": "Dumka Tribal Sector",
+        "scada_channel": "SCADA CH: 22",
+        "position": {
+          "x": 88,
+          "y": 37
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "RO ACTIVE",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.0 pH",
+        "tds": "235 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 22"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.0 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "235 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.25 NTU"
+        }
+      ]
+    },
+    "JH-KDR-28": {
+      "info": {
+        "name": "Musabani Copper Mine Station",
+        "district": "Koderma Mining Belt",
+        "scada_channel": "SCADA CH: 07",
+        "position": {
+          "x": 39,
+          "y": 15
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "OPTIMAL",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.1 pH",
+        "tds": "250 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 07"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.1 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "250 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.3 NTU"
+        }
+      ]
+    },
+    "JH-CTR-29": {
+      "info": {
+        "name": "Jamshedpur Suburb Water Plant",
+        "district": "Chatra Catchment Zone",
+        "scada_channel": "SCADA CH: 12",
+        "position": {
+          "x": 32,
+          "y": 28
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "UV DISINFECTION",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.2 pH",
+        "tds": "160 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 12"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.2 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "160 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.15 NTU"
+        }
+      ]
+    },
+    "JH-LTH-30": {
+      "info": {
+        "name": "Noamundi Iron Ore Belt Probe #01",
+        "district": "Latehar Forest Station",
+        "scada_channel": "SCADA CH: 15",
+        "position": {
+          "x": 34,
+          "y": 63
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "RO ACTIVE",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.3 pH",
+        "tds": "175 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 15"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.3 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "175 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.2 NTU"
+        }
+      ]
+    },
+    "JH-DHN-31": {
+      "info": {
+        "name": "Gua Mining Colony Unit #02",
+        "district": "Dhanbad Mining Belt",
+        "scada_channel": "SCADA CH: 09",
+        "position": {
+          "x": 56,
+          "y": 55
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "OPTIMAL",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "6.9 pH",
+        "tds": "190 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 09"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "6.9 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "190 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.25 NTU"
+        }
+      ]
+    },
+    "JH-ESB-32": {
+      "info": {
+        "name": "Daltonganj Central Filtration",
+        "district": "East Singhbhum",
+        "scada_channel": "SCADA CH: 14",
+        "position": {
+          "x": 82,
+          "y": 80
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "UV DISINFECTION",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.0 pH",
+        "tds": "205 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 14"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.0 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "205 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.3 NTU"
+        }
+      ]
+    },
+    "JH-BOK-33": {
+      "info": {
+        "name": "Garhwa Sub-Divisional Outpost",
+        "district": "Bokaro Industrial Zone",
+        "scada_channel": "SCADA CH: 02",
+        "position": {
+          "x": 64,
+          "y": 36
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "RO ACTIVE",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.1 pH",
+        "tds": "220 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 02"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.1 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "220 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.15 NTU"
+        }
+      ]
+    },
+    "JH-DHN-34": {
+      "info": {
+        "name": "Chirkunda Intake Unit #02",
+        "district": "Dhanbad Rural",
+        "scada_channel": "SCADA CH: 01",
+        "position": {
+          "x": 50,
+          "y": 56
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "OPTIMAL",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.2 pH",
+        "tds": "235 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 01"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.2 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "235 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.2 NTU"
+        }
+      ]
+    },
+    "JH-RMG-35": {
+      "info": {
+        "name": "Loyabad Colliery Sensor Node",
+        "district": "Ramgarh",
+        "scada_channel": "SCADA CH: 05",
+        "position": {
+          "x": 44,
+          "y": 73
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "UV DISINFECTION",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.3 pH",
+        "tds": "250 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 05"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.3 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "250 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.25 NTU"
+        }
+      ]
+    },
+    "JH-HZB-36": {
+      "info": {
+        "name": "Sijua Mining Drainage Probe",
+        "district": "Hazaribagh Mining Sector",
+        "scada_channel": "SCADA CH: 08",
+        "position": {
+          "x": 46,
+          "y": 32
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "RO ACTIVE",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "6.9 pH",
+        "tds": "160 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 08"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "6.9 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "160 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.3 NTU"
+        }
+      ]
+    },
+    "JH-PAL-37": {
+      "info": {
+        "name": "Bhowra Washing Plant Node #01",
+        "district": "Palamu Mine Runoff",
+        "scada_channel": "SCADA CH: 03",
+        "position": {
+          "x": 33,
+          "y": 47
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "OPTIMAL",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.0 pH",
+        "tds": "175 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 03"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.0 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "175 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.15 NTU"
+        }
+      ]
+    },
+    "JH-RNC-38": {
+      "info": {
+        "name": "Bhurkunda Thermal Runoff Station",
+        "district": "Ranchi Urban Basin",
+        "scada_channel": "SCADA CH: 11",
+        "position": {
+          "x": 33,
+          "y": 54
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "UV DISINFECTION",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.1 pH",
+        "tds": "190 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 11"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.1 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "190 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.2 NTU"
+        }
+      ]
+    },
+    "JH-WSB-39": {
+      "info": {
+        "name": "Gola Sub-Basin Node #02",
+        "district": "West Singhbhum Outpost",
+        "scada_channel": "SCADA CH: 17",
+        "position": {
+          "x": 70,
+          "y": 82
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "RO ACTIVE",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.2 pH",
+        "tds": "205 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 17"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.2 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "205 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.25 NTU"
+        }
+      ]
+    },
+    "JH-GRD-40": {
+      "info": {
+        "name": "Ramgarh Cantonment Filter Station",
+        "district": "Giridih Colliery Belt",
+        "scada_channel": "SCADA CH: 06",
+        "position": {
+          "x": 65,
+          "y": 43
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "OPTIMAL",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.3 pH",
+        "tds": "220 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 06"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.3 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "220 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.3 NTU"
+        }
+      ]
+    },
+    "JH-DGH-41": {
+      "info": {
+        "name": "Mandu Mining Outpost #04",
+        "district": "Deoghar Water Works",
+        "scada_channel": "SCADA CH: 19",
+        "position": {
+          "x": 67,
+          "y": 20
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "UV DISINFECTION",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "6.9 pH",
+        "tds": "235 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 19"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "6.9 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "235 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.15 NTU"
+        }
+      ]
+    },
+    "JH-DMK-42": {
+      "info": {
+        "name": "Kujju Coal Seam Node #01",
+        "district": "Dumka Tribal Sector",
+        "scada_channel": "SCADA CH: 22",
+        "position": {
+          "x": 82,
+          "y": 40
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "RO ACTIVE",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.0 pH",
+        "tds": "250 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 22"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.0 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "250 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.2 NTU"
+        }
+      ]
+    },
+    "JH-KDR-43": {
+      "info": {
+        "name": "Tatanagar Water Matrix #03",
+        "district": "Koderma Mining Belt",
+        "scada_channel": "SCADA CH: 07",
+        "position": {
+          "x": 52,
+          "y": 16
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "OPTIMAL",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.1 pH",
+        "tds": "160 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 07"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.1 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "160 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.25 NTU"
+        }
+      ]
+    },
+    "JH-CTR-44": {
+      "info": {
+        "name": "Adityapur Industrial Station",
+        "district": "Chatra Catchment Zone",
+        "scada_channel": "SCADA CH: 12",
+        "position": {
+          "x": 22,
+          "y": 31
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "UV DISINFECTION",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.2 pH",
+        "tds": "175 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 12"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.2 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "175 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.3 NTU"
+        }
+      ]
+    },
+    "JH-LTH-45": {
+      "info": {
+        "name": "Gamharia Technology Park Node",
+        "district": "Latehar Forest Station",
+        "scada_channel": "SCADA CH: 15",
+        "position": {
+          "x": 24,
+          "y": 66
+        }
+      },
+      "system": {
+        "online": true,
+        "status": "normal",
+        "status_label": "RO ACTIVE",
+        "side_label": "NORMAL",
+        "tone": "#4edea3",
+        "tone_bg": "rgba(78,222,163,0.15)",
+        "solenoid_shutoff_active": false
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.3 pH",
+        "tds": "190 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 15"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.3 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "190 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.15 NTU"
+        }
+      ]
+    }
+  },
+  "plants": [
+    {
+      "id": "JH-DHN-01",
+      "name": "Jharia Colliery Sector 4",
+      "district": "Dhanbad Mining Belt",
+      "status": "cutoff",
+      "statusLabel": "CRITICAL CUTOFF",
+      "sideLabel": "AUTO-HALTED",
+      "tone": "#ffb4ab",
+      "toneBg": "rgba(255,180,171,0.15)",
+      "pos": {
+        "x": 53,
+        "y": 49
+      },
+      "spotlight": {
+        "pb": "0.042 ppm",
+        "ph": "5.8 pH",
+        "tds": "680 ppm",
+        "solenoid_shutoff_active": true,
+        "scada_channel": "SCADA CH: 09"
+      },
+      "metrics": [
+        {
+          "label": "Lead (Pb) Concentration",
+          "value": "0.042 ppm (Limit: 0.01)"
+        },
+        {
+          "label": "Solenoid Gate Valve",
+          "value": "CLOSED (0 L/min)"
+        }
+      ]
+    },
+    {
+      "id": "JH-ESB-02",
+      "name": "Ghatsila Mining Outpost",
+      "district": "East Singhbhum",
+      "status": "alert",
+      "statusLabel": "ELEVATED METALS",
+      "sideLabel": "WARNING",
+      "tone": "#7bd0ff",
+      "toneBg": "rgba(123,208,255,0.15)",
+      "pos": {
+        "x": 79,
+        "y": 74
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "6.6 pH",
+        "tds": "410 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 14"
+      },
+      "metrics": [
+        {
+          "label": "Iron (Fe)",
+          "value": "0.38 ppm"
+        },
+        {
+          "label": "pH Value",
+          "value": "6.6 pH"
+        },
+        {
+          "label": "Discharge",
+          "value": "390 L/hr"
+        }
+      ]
+    },
+    {
+      "id": "JH-BOK-03",
+      "name": "Bermo Coal Belt Plant #02",
+      "district": "Bokaro Industrial Zone",
+      "status": "normal",
+      "statusLabel": "RO ACTIVE",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 61,
+        "y": 57
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.1 pH",
+        "tds": "190 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 02"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.1 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "190 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.25 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-DHN-04",
+      "name": "Topchanchi Rural Unit #01",
+      "district": "Dhanbad Rural",
+      "status": "normal",
+      "statusLabel": "OPTIMAL",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 70,
+        "y": 50
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.2 pH",
+        "tds": "205 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 01"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.2 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "205 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.3 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-RMG-05",
+      "name": "Patratu Basin Unit #05",
+      "district": "Ramgarh",
+      "status": "normal",
+      "statusLabel": "UV DISINFECTION",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 41,
+        "y": 67
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.3 pH",
+        "tds": "220 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 05"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.3 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "220 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.15 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-HZB-06",
+      "name": "Hazaribagh Coal Washing Unit #09",
+      "district": "Hazaribagh Mining Sector",
+      "status": "cutoff",
+      "statusLabel": "CRITICAL CUTOFF",
+      "sideLabel": "AUTO-HALTED",
+      "tone": "#ffb4ab",
+      "toneBg": "rgba(255,180,171,0.15)",
+      "pos": {
+        "x": 43,
+        "y": 26
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "5.5 pH",
+        "tds": "710 ppm",
+        "solenoid_shutoff_active": true,
+        "scada_channel": "SCADA CH: 08"
+      },
+      "metrics": [
+        {
+          "label": "Arsenic (As) Concentration",
+          "value": "0.035 ppm (Limit: 0.01)"
+        },
+        {
+          "label": "Solenoid Gate Valve",
+          "value": "CLOSED (0 L/min)"
+        }
+      ]
+    },
+    {
+      "id": "JH-PAL-07",
+      "name": "Palamu Station #03",
+      "district": "Palamu Mine Runoff",
+      "status": "alert",
+      "statusLabel": "HIGH FLUORIDE",
+      "sideLabel": "WARNING",
+      "tone": "#7bd0ff",
+      "toneBg": "rgba(123,208,255,0.15)",
+      "pos": {
+        "x": 30,
+        "y": 41
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "6.8 pH",
+        "tds": "490 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 03"
+      },
+      "metrics": [
+        {
+          "label": "Fluoride (F-)",
+          "value": "1.45 ppm"
+        },
+        {
+          "label": "pH Value",
+          "value": "6.8 pH"
+        },
+        {
+          "label": "Discharge",
+          "value": "410 L/hr"
+        }
+      ]
+    },
+    {
+      "id": "JH-RNC-08",
+      "name": "Ranchi Sub-Basin Plant #01",
+      "district": "Ranchi Urban Basin",
+      "status": "normal",
+      "statusLabel": "UV DISINFECTION",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 30,
+        "y": 75
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.1 pH",
+        "tds": "160 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 11"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.1 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "160 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.3 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-WSB-09",
+      "name": "Chaibasa Mining Station #04",
+      "district": "West Singhbhum Outpost",
+      "status": "normal",
+      "statusLabel": "RO ACTIVE",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 67,
+        "y": 76
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.2 pH",
+        "tds": "175 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 17"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.2 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "175 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.15 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-GRD-10",
+      "name": "Giridih Sector 2 Purification",
+      "district": "Giridih Colliery Belt",
+      "status": "normal",
+      "statusLabel": "OPTIMAL",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 62,
+        "y": 37
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.3 pH",
+        "tds": "190 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 06"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.3 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "190 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.2 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-DGH-11",
+      "name": "Deoghar Reservoir Probe #01",
+      "district": "Deoghar Water Works",
+      "status": "normal",
+      "statusLabel": "UV DISINFECTION",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 64,
+        "y": 15
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "6.9 pH",
+        "tds": "205 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 19"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "6.9 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "205 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.25 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-DMK-12",
+      "name": "Dumka Rural Outpost #03",
+      "district": "Dumka Tribal Sector",
+      "status": "normal",
+      "statusLabel": "RO ACTIVE",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 79,
+        "y": 34
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.0 pH",
+        "tds": "220 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 22"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.0 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "220 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.3 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-KDR-13",
+      "name": "Jhumri Telaiya Station #02",
+      "district": "Koderma Mining Belt",
+      "status": "normal",
+      "statusLabel": "OPTIMAL",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 49,
+        "y": 37
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.1 pH",
+        "tds": "235 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 07"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.1 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "235 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.15 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-CTR-14",
+      "name": "Chatra Runoff Monitoring Unit",
+      "district": "Chatra Catchment Zone",
+      "status": "normal",
+      "statusLabel": "UV DISINFECTION",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 42,
+        "y": 25
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.2 pH",
+        "tds": "250 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 12"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.2 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "250 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.2 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-LTH-15",
+      "name": "Chandwa Industrial Outpost",
+      "district": "Latehar Forest Station",
+      "status": "normal",
+      "statusLabel": "RO ACTIVE",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 21,
+        "y": 60
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.3 pH",
+        "tds": "160 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 15"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.3 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "160 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.25 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-DHN-16",
+      "name": "Sindri Fertilizer Zone #03",
+      "district": "Dhanbad Mining Belt",
+      "status": "normal",
+      "statusLabel": "OPTIMAL",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 66,
+        "y": 52
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "6.9 pH",
+        "tds": "175 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 09"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "6.9 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "175 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.3 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-ESB-17",
+      "name": "Katras Coal Seam Station #02",
+      "district": "East Singhbhum",
+      "status": "normal",
+      "statusLabel": "UV DISINFECTION",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 88,
+        "y": 77
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.0 pH",
+        "tds": "190 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 14"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.0 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "190 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.15 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-BOK-18",
+      "name": "Nirsa Border Monitoring Probe",
+      "district": "Bokaro Industrial Zone",
+      "status": "normal",
+      "statusLabel": "RO ACTIVE",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 51,
+        "y": 60
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.1 pH",
+        "tds": "205 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 02"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.1 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "205 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.2 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-DHN-19",
+      "name": "Chandrapura Thermal Station #01",
+      "district": "Dhanbad Rural",
+      "status": "normal",
+      "statusLabel": "OPTIMAL",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 60,
+        "y": 53
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.2 pH",
+        "tds": "220 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 01"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.2 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "220 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.25 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-RMG-20",
+      "name": "Phusro Industrial Outpost #04",
+      "district": "Ramgarh",
+      "status": "normal",
+      "statusLabel": "UV DISINFECTION",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 54,
+        "y": 70
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.3 pH",
+        "tds": "235 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 05"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.3 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "235 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.3 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-HZB-21",
+      "name": "Gomoh Junction Water Station",
+      "district": "Hazaribagh Mining Sector",
+      "status": "normal",
+      "statusLabel": "RO ACTIVE",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 33,
+        "y": 29
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "6.9 pH",
+        "tds": "250 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 08"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "6.9 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "250 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.15 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-PAL-22",
+      "name": "Barkakana SCADA Node #03",
+      "district": "Palamu Mine Runoff",
+      "status": "cutoff",
+      "statusLabel": "CRITICAL CUTOFF",
+      "sideLabel": "AUTO-HALTED",
+      "tone": "#ffb4ab",
+      "toneBg": "rgba(255,180,171,0.15)",
+      "pos": {
+        "x": 20,
+        "y": 44
+      },
+      "spotlight": {
+        "pb": "0.028 ppm",
+        "ph": "4.8 pH",
+        "tds": "820 ppm",
+        "solenoid_shutoff_active": true,
+        "scada_channel": "SCADA CH: 03"
+      },
+      "metrics": [
+        {
+          "label": "Acid Mine Drainage",
+          "value": "pH 4.8 (Limit: 6.5)"
+        },
+        {
+          "label": "Solenoid Gate Valve",
+          "value": "CLOSED (0 L/min)"
+        }
+      ]
+    },
+    {
+      "id": "JH-RNC-23",
+      "name": "Garga Dam Water Intake",
+      "district": "Ranchi Urban Basin",
+      "status": "normal",
+      "statusLabel": "UV DISINFECTION",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 43,
+        "y": 78
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.1 pH",
+        "tds": "175 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 11"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.1 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "175 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.25 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-WSB-24",
+      "name": "Tenughat Reservoir Probe #02",
+      "district": "West Singhbhum Outpost",
+      "status": "normal",
+      "statusLabel": "RO ACTIVE",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 57,
+        "y": 79
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.2 pH",
+        "tds": "190 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 17"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.2 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "190 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.3 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-GRD-25",
+      "name": "Dhurwa Dam Filter Station #01",
+      "district": "Giridih Colliery Belt",
+      "status": "normal",
+      "statusLabel": "OPTIMAL",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 52,
+        "y": 40
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.3 pH",
+        "tds": "205 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 06"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.3 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "205 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.15 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-DGH-26",
+      "name": "Kanke Reservoir Monitoring Unit",
+      "district": "Deoghar Water Works",
+      "status": "normal",
+      "statusLabel": "UV DISINFECTION",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 77,
+        "y": 17
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "6.9 pH",
+        "tds": "220 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 19"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "6.9 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "220 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.2 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-DMK-27",
+      "name": "Hatia Dam Filtration Plant",
+      "district": "Dumka Tribal Sector",
+      "status": "normal",
+      "statusLabel": "RO ACTIVE",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 88,
+        "y": 37
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.0 pH",
+        "tds": "235 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 22"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.0 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "235 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.25 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-KDR-28",
+      "name": "Musabani Copper Mine Station",
+      "district": "Koderma Mining Belt",
+      "status": "normal",
+      "statusLabel": "OPTIMAL",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 39,
+        "y": 15
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.1 pH",
+        "tds": "250 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 07"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.1 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "250 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.3 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-CTR-29",
+      "name": "Jamshedpur Suburb Water Plant",
+      "district": "Chatra Catchment Zone",
+      "status": "normal",
+      "statusLabel": "UV DISINFECTION",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 32,
+        "y": 28
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.2 pH",
+        "tds": "160 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 12"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.2 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "160 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.15 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-LTH-30",
+      "name": "Noamundi Iron Ore Belt Probe #01",
+      "district": "Latehar Forest Station",
+      "status": "normal",
+      "statusLabel": "RO ACTIVE",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 34,
+        "y": 63
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.3 pH",
+        "tds": "175 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 15"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.3 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "175 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.2 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-DHN-31",
+      "name": "Gua Mining Colony Unit #02",
+      "district": "Dhanbad Mining Belt",
+      "status": "normal",
+      "statusLabel": "OPTIMAL",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 56,
+        "y": 55
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "6.9 pH",
+        "tds": "190 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 09"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "6.9 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "190 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.25 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-ESB-32",
+      "name": "Daltonganj Central Filtration",
+      "district": "East Singhbhum",
+      "status": "normal",
+      "statusLabel": "UV DISINFECTION",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 82,
+        "y": 80
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.0 pH",
+        "tds": "205 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 14"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.0 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "205 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.3 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-BOK-33",
+      "name": "Garhwa Sub-Divisional Outpost",
+      "district": "Bokaro Industrial Zone",
+      "status": "normal",
+      "statusLabel": "RO ACTIVE",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 64,
+        "y": 36
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.1 pH",
+        "tds": "220 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 02"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.1 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "220 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.15 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-DHN-34",
+      "name": "Chirkunda Intake Unit #02",
+      "district": "Dhanbad Rural",
+      "status": "normal",
+      "statusLabel": "OPTIMAL",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 50,
+        "y": 56
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.2 pH",
+        "tds": "235 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 01"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.2 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "235 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.2 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-RMG-35",
+      "name": "Loyabad Colliery Sensor Node",
+      "district": "Ramgarh",
+      "status": "normal",
+      "statusLabel": "UV DISINFECTION",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 44,
+        "y": 73
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.3 pH",
+        "tds": "250 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 05"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.3 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "250 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.25 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-HZB-36",
+      "name": "Sijua Mining Drainage Probe",
+      "district": "Hazaribagh Mining Sector",
+      "status": "normal",
+      "statusLabel": "RO ACTIVE",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 46,
+        "y": 32
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "6.9 pH",
+        "tds": "160 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 08"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "6.9 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "160 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.3 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-PAL-37",
+      "name": "Bhowra Washing Plant Node #01",
+      "district": "Palamu Mine Runoff",
+      "status": "normal",
+      "statusLabel": "OPTIMAL",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 33,
+        "y": 47
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.0 pH",
+        "tds": "175 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 03"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.0 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "175 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.15 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-RNC-38",
+      "name": "Bhurkunda Thermal Runoff Station",
+      "district": "Ranchi Urban Basin",
+      "status": "normal",
+      "statusLabel": "UV DISINFECTION",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 33,
+        "y": 54
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.1 pH",
+        "tds": "190 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 11"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.1 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "190 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.2 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-WSB-39",
+      "name": "Gola Sub-Basin Node #02",
+      "district": "West Singhbhum Outpost",
+      "status": "normal",
+      "statusLabel": "RO ACTIVE",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 70,
+        "y": 82
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.2 pH",
+        "tds": "205 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 17"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.2 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "205 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.25 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-GRD-40",
+      "name": "Ramgarh Cantonment Filter Station",
+      "district": "Giridih Colliery Belt",
+      "status": "normal",
+      "statusLabel": "OPTIMAL",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 65,
+        "y": 43
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.3 pH",
+        "tds": "220 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 06"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.3 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "220 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.3 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-DGH-41",
+      "name": "Mandu Mining Outpost #04",
+      "district": "Deoghar Water Works",
+      "status": "normal",
+      "statusLabel": "UV DISINFECTION",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 67,
+        "y": 20
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "6.9 pH",
+        "tds": "235 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 19"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "6.9 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "235 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.15 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-DMK-42",
+      "name": "Kujju Coal Seam Node #01",
+      "district": "Dumka Tribal Sector",
+      "status": "normal",
+      "statusLabel": "RO ACTIVE",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 82,
+        "y": 40
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.0 pH",
+        "tds": "250 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 22"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.0 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "250 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.2 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-KDR-43",
+      "name": "Tatanagar Water Matrix #03",
+      "district": "Koderma Mining Belt",
+      "status": "normal",
+      "statusLabel": "OPTIMAL",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 52,
+        "y": 16
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.1 pH",
+        "tds": "160 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 07"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.1 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "160 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.25 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-CTR-44",
+      "name": "Adityapur Industrial Station",
+      "district": "Chatra Catchment Zone",
+      "status": "normal",
+      "statusLabel": "UV DISINFECTION",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 22,
+        "y": 31
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.2 pH",
+        "tds": "175 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 12"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.2 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "175 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.3 NTU"
+        }
+      ]
+    },
+    {
+      "id": "JH-LTH-45",
+      "name": "Gamharia Technology Park Node",
+      "district": "Latehar Forest Station",
+      "status": "normal",
+      "statusLabel": "RO ACTIVE",
+      "sideLabel": "NORMAL",
+      "tone": "#4edea3",
+      "toneBg": "rgba(78,222,163,0.15)",
+      "pos": {
+        "x": 24,
+        "y": 66
+      },
+      "spotlight": {
+        "pb": "<0.001 ppm",
+        "ph": "7.3 pH",
+        "tds": "190 ppm",
+        "solenoid_shutoff_active": false,
+        "scada_channel": "SCADA CH: 15"
+      },
+      "metrics": [
+        {
+          "label": "pH Level",
+          "value": "7.3 pH"
+        },
+        {
+          "label": "TDS Inflow",
+          "value": "190 ppm"
+        },
+        {
+          "label": "Turbidity",
+          "value": "0.15 NTU"
+        }
+      ]
+    }
+  ],
+  "status_counts": {
+    "all": 45,
+    "normal": 40,
+    "alert": 2,
+    "cutoff": 3
+  },
+  "kpis": [
+    {
+      "key": "water",
+      "label": "Total Clean Water Dispensed",
+      "value": "1,482,900",
+      "unit": "L",
+      "baseline_comparison": "+8.4% vs 30d baseline"
+    },
+    {
+      "key": "units",
+      "label": "Purification Units",
+      "value": "42/45",
+      "unit": "ONLINE",
+      "in_maintenance_count": 3,
+      "maintenance_districts": [
+        "Dhanbad Mining Belt",
+        "Ramgarh",
+        "Hazaribagh"
+      ]
+    },
+    {
+      "key": "population",
+      "label": "Population Protected",
+      "value": "384,200",
+      "unit": "SOULS",
+      "districts_count": 14,
+      "district_types": "Mining & Rural Districts"
+    },
+    {
+      "key": "compliance",
+      "label": "Overall Compliance",
+      "value": "94.2",
+      "unit": "% INDEX",
+      "compliance_standard": "BIS IS 10500 Compliant"
+    },
+    {
+      "key": "incursions",
+      "label": "Incursions Blocked",
+      "value": "18",
+      "unit": "EVENTS",
+      "status_badge": "AUTO-CUTOFF ENGAGED"
+    }
+  ],
+  "statewide_overview": {
+    "system_status": {
+      "scada_cluster": "JH-EAST-CENTRAL",
+      "sync_timestamp": "14:32:08 IST",
+      "surveillance_status": "MINING SECTOR RUNOFF SURVEILLANCE ACTIVE",
+      "validation_status": "IS-10500 AUTO-VALIDATED",
+      "department": "Jharkhand Drinking Water and Sanitation Department",
+      "central_dispatch_phone": "1800-345-6789",
+      "scada_engine_version": "v3.4.1"
+    },
+    "kpis": [
+      {
+        "key": "water",
+        "label": "Total Clean Water Dispensed",
+        "value": "1,482,900",
+        "unit": "L",
+        "baseline_comparison": "+8.4% vs 30d baseline"
+      },
+      {
+        "key": "units",
+        "label": "Purification Units",
+        "value": "42/45",
+        "unit": "ONLINE",
+        "in_maintenance_count": 3,
+        "maintenance_districts": [
+          "Dhanbad Mining Belt",
+          "Ramgarh",
+          "Hazaribagh"
+        ]
+      },
+      {
+        "key": "population",
+        "label": "Population Protected",
+        "value": "384,200",
+        "unit": "SOULS",
+        "districts_count": 14,
+        "district_types": "Mining & Rural Districts"
+      },
+      {
+        "key": "compliance",
+        "label": "Overall Compliance",
+        "value": "94.2",
+        "unit": "% INDEX",
+        "compliance_standard": "BIS IS 10500 Compliant"
+      },
+      {
+        "key": "incursions",
+        "label": "Incursions Blocked",
+        "value": "18",
+        "unit": "EVENTS",
+        "status_badge": "AUTO-CUTOFF ENGAGED"
+      }
+    ],
+    "status_counts": {
+      "all": 45,
+      "normal": 40,
+      "alert": 2,
+      "cutoff": 3
+    },
+    "plants": [
+      {
+        "id": "JH-DHN-01",
+        "name": "Jharia Colliery Sector 4",
+        "district": "Dhanbad Mining Belt",
+        "status": "cutoff",
+        "statusLabel": "CRITICAL CUTOFF",
+        "sideLabel": "AUTO-HALTED",
+        "tone": "#ffb4ab",
+        "toneBg": "rgba(255,180,171,0.15)",
+        "pos": {
+          "x": 53,
+          "y": 49
+        },
+        "spotlight": {
+          "pb": "0.042 ppm",
+          "ph": "5.8 pH",
+          "tds": "680 ppm",
+          "solenoid_shutoff_active": true,
+          "scada_channel": "SCADA CH: 09"
+        },
+        "metrics": [
+          {
+            "label": "Lead (Pb) Concentration",
+            "value": "0.042 ppm (Limit: 0.01)"
+          },
+          {
+            "label": "Solenoid Gate Valve",
+            "value": "CLOSED (0 L/min)"
+          }
+        ]
+      },
+      {
+        "id": "JH-ESB-02",
+        "name": "Ghatsila Mining Outpost",
+        "district": "East Singhbhum",
+        "status": "alert",
+        "statusLabel": "ELEVATED METALS",
+        "sideLabel": "WARNING",
+        "tone": "#7bd0ff",
+        "toneBg": "rgba(123,208,255,0.15)",
+        "pos": {
+          "x": 79,
+          "y": 74
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "6.6 pH",
+          "tds": "410 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 14"
+        },
+        "metrics": [
+          {
+            "label": "Iron (Fe)",
+            "value": "0.38 ppm"
+          },
+          {
+            "label": "pH Value",
+            "value": "6.6 pH"
+          },
+          {
+            "label": "Discharge",
+            "value": "390 L/hr"
+          }
+        ]
+      },
+      {
+        "id": "JH-BOK-03",
+        "name": "Bermo Coal Belt Plant #02",
+        "district": "Bokaro Industrial Zone",
+        "status": "normal",
+        "statusLabel": "RO ACTIVE",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 61,
+          "y": 57
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.1 pH",
+          "tds": "190 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 02"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.1 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "190 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.25 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-DHN-04",
+        "name": "Topchanchi Rural Unit #01",
+        "district": "Dhanbad Rural",
+        "status": "normal",
+        "statusLabel": "OPTIMAL",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 70,
+          "y": 50
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.2 pH",
+          "tds": "205 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 01"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.2 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "205 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.3 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-RMG-05",
+        "name": "Patratu Basin Unit #05",
+        "district": "Ramgarh",
+        "status": "normal",
+        "statusLabel": "UV DISINFECTION",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 41,
+          "y": 67
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.3 pH",
+          "tds": "220 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 05"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.3 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "220 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.15 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-HZB-06",
+        "name": "Hazaribagh Coal Washing Unit #09",
+        "district": "Hazaribagh Mining Sector",
+        "status": "cutoff",
+        "statusLabel": "CRITICAL CUTOFF",
+        "sideLabel": "AUTO-HALTED",
+        "tone": "#ffb4ab",
+        "toneBg": "rgba(255,180,171,0.15)",
+        "pos": {
+          "x": 43,
+          "y": 26
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "5.5 pH",
+          "tds": "710 ppm",
+          "solenoid_shutoff_active": true,
+          "scada_channel": "SCADA CH: 08"
+        },
+        "metrics": [
+          {
+            "label": "Arsenic (As) Concentration",
+            "value": "0.035 ppm (Limit: 0.01)"
+          },
+          {
+            "label": "Solenoid Gate Valve",
+            "value": "CLOSED (0 L/min)"
+          }
+        ]
+      },
+      {
+        "id": "JH-PAL-07",
+        "name": "Palamu Station #03",
+        "district": "Palamu Mine Runoff",
+        "status": "alert",
+        "statusLabel": "HIGH FLUORIDE",
+        "sideLabel": "WARNING",
+        "tone": "#7bd0ff",
+        "toneBg": "rgba(123,208,255,0.15)",
+        "pos": {
+          "x": 30,
+          "y": 41
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "6.8 pH",
+          "tds": "490 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 03"
+        },
+        "metrics": [
+          {
+            "label": "Fluoride (F-)",
+            "value": "1.45 ppm"
+          },
+          {
+            "label": "pH Value",
+            "value": "6.8 pH"
+          },
+          {
+            "label": "Discharge",
+            "value": "410 L/hr"
+          }
+        ]
+      },
+      {
+        "id": "JH-RNC-08",
+        "name": "Ranchi Sub-Basin Plant #01",
+        "district": "Ranchi Urban Basin",
+        "status": "normal",
+        "statusLabel": "UV DISINFECTION",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 30,
+          "y": 75
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.1 pH",
+          "tds": "160 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 11"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.1 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "160 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.3 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-WSB-09",
+        "name": "Chaibasa Mining Station #04",
+        "district": "West Singhbhum Outpost",
+        "status": "normal",
+        "statusLabel": "RO ACTIVE",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 67,
+          "y": 76
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.2 pH",
+          "tds": "175 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 17"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.2 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "175 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.15 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-GRD-10",
+        "name": "Giridih Sector 2 Purification",
+        "district": "Giridih Colliery Belt",
+        "status": "normal",
+        "statusLabel": "OPTIMAL",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 62,
+          "y": 37
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.3 pH",
+          "tds": "190 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 06"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.3 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "190 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.2 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-DGH-11",
+        "name": "Deoghar Reservoir Probe #01",
+        "district": "Deoghar Water Works",
+        "status": "normal",
+        "statusLabel": "UV DISINFECTION",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 64,
+          "y": 15
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "6.9 pH",
+          "tds": "205 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 19"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "6.9 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "205 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.25 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-DMK-12",
+        "name": "Dumka Rural Outpost #03",
+        "district": "Dumka Tribal Sector",
+        "status": "normal",
+        "statusLabel": "RO ACTIVE",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 79,
+          "y": 34
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.0 pH",
+          "tds": "220 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 22"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.0 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "220 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.3 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-KDR-13",
+        "name": "Jhumri Telaiya Station #02",
+        "district": "Koderma Mining Belt",
+        "status": "normal",
+        "statusLabel": "OPTIMAL",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 49,
+          "y": 37
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.1 pH",
+          "tds": "235 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 07"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.1 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "235 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.15 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-CTR-14",
+        "name": "Chatra Runoff Monitoring Unit",
+        "district": "Chatra Catchment Zone",
+        "status": "normal",
+        "statusLabel": "UV DISINFECTION",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 42,
+          "y": 25
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.2 pH",
+          "tds": "250 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 12"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.2 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "250 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.2 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-LTH-15",
+        "name": "Chandwa Industrial Outpost",
+        "district": "Latehar Forest Station",
+        "status": "normal",
+        "statusLabel": "RO ACTIVE",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 21,
+          "y": 60
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.3 pH",
+          "tds": "160 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 15"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.3 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "160 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.25 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-DHN-16",
+        "name": "Sindri Fertilizer Zone #03",
+        "district": "Dhanbad Mining Belt",
+        "status": "normal",
+        "statusLabel": "OPTIMAL",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 66,
+          "y": 52
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "6.9 pH",
+          "tds": "175 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 09"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "6.9 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "175 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.3 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-ESB-17",
+        "name": "Katras Coal Seam Station #02",
+        "district": "East Singhbhum",
+        "status": "normal",
+        "statusLabel": "UV DISINFECTION",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 88,
+          "y": 77
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.0 pH",
+          "tds": "190 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 14"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.0 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "190 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.15 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-BOK-18",
+        "name": "Nirsa Border Monitoring Probe",
+        "district": "Bokaro Industrial Zone",
+        "status": "normal",
+        "statusLabel": "RO ACTIVE",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 51,
+          "y": 60
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.1 pH",
+          "tds": "205 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 02"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.1 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "205 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.2 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-DHN-19",
+        "name": "Chandrapura Thermal Station #01",
+        "district": "Dhanbad Rural",
+        "status": "normal",
+        "statusLabel": "OPTIMAL",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 60,
+          "y": 53
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.2 pH",
+          "tds": "220 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 01"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.2 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "220 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.25 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-RMG-20",
+        "name": "Phusro Industrial Outpost #04",
+        "district": "Ramgarh",
+        "status": "normal",
+        "statusLabel": "UV DISINFECTION",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 54,
+          "y": 70
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.3 pH",
+          "tds": "235 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 05"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.3 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "235 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.3 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-HZB-21",
+        "name": "Gomoh Junction Water Station",
+        "district": "Hazaribagh Mining Sector",
+        "status": "normal",
+        "statusLabel": "RO ACTIVE",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 33,
+          "y": 29
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "6.9 pH",
+          "tds": "250 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 08"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "6.9 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "250 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.15 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-PAL-22",
+        "name": "Barkakana SCADA Node #03",
+        "district": "Palamu Mine Runoff",
+        "status": "cutoff",
+        "statusLabel": "CRITICAL CUTOFF",
+        "sideLabel": "AUTO-HALTED",
+        "tone": "#ffb4ab",
+        "toneBg": "rgba(255,180,171,0.15)",
+        "pos": {
+          "x": 20,
+          "y": 44
+        },
+        "spotlight": {
+          "pb": "0.028 ppm",
+          "ph": "4.8 pH",
+          "tds": "820 ppm",
+          "solenoid_shutoff_active": true,
+          "scada_channel": "SCADA CH: 03"
+        },
+        "metrics": [
+          {
+            "label": "Acid Mine Drainage",
+            "value": "pH 4.8 (Limit: 6.5)"
+          },
+          {
+            "label": "Solenoid Gate Valve",
+            "value": "CLOSED (0 L/min)"
+          }
+        ]
+      },
+      {
+        "id": "JH-RNC-23",
+        "name": "Garga Dam Water Intake",
+        "district": "Ranchi Urban Basin",
+        "status": "normal",
+        "statusLabel": "UV DISINFECTION",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 43,
+          "y": 78
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.1 pH",
+          "tds": "175 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 11"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.1 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "175 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.25 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-WSB-24",
+        "name": "Tenughat Reservoir Probe #02",
+        "district": "West Singhbhum Outpost",
+        "status": "normal",
+        "statusLabel": "RO ACTIVE",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 57,
+          "y": 79
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.2 pH",
+          "tds": "190 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 17"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.2 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "190 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.3 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-GRD-25",
+        "name": "Dhurwa Dam Filter Station #01",
+        "district": "Giridih Colliery Belt",
+        "status": "normal",
+        "statusLabel": "OPTIMAL",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 52,
+          "y": 40
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.3 pH",
+          "tds": "205 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 06"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.3 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "205 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.15 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-DGH-26",
+        "name": "Kanke Reservoir Monitoring Unit",
+        "district": "Deoghar Water Works",
+        "status": "normal",
+        "statusLabel": "UV DISINFECTION",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 77,
+          "y": 17
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "6.9 pH",
+          "tds": "220 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 19"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "6.9 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "220 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.2 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-DMK-27",
+        "name": "Hatia Dam Filtration Plant",
+        "district": "Dumka Tribal Sector",
+        "status": "normal",
+        "statusLabel": "RO ACTIVE",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 88,
+          "y": 37
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.0 pH",
+          "tds": "235 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 22"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.0 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "235 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.25 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-KDR-28",
+        "name": "Musabani Copper Mine Station",
+        "district": "Koderma Mining Belt",
+        "status": "normal",
+        "statusLabel": "OPTIMAL",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 39,
+          "y": 15
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.1 pH",
+          "tds": "250 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 07"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.1 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "250 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.3 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-CTR-29",
+        "name": "Jamshedpur Suburb Water Plant",
+        "district": "Chatra Catchment Zone",
+        "status": "normal",
+        "statusLabel": "UV DISINFECTION",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 32,
+          "y": 28
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.2 pH",
+          "tds": "160 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 12"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.2 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "160 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.15 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-LTH-30",
+        "name": "Noamundi Iron Ore Belt Probe #01",
+        "district": "Latehar Forest Station",
+        "status": "normal",
+        "statusLabel": "RO ACTIVE",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 34,
+          "y": 63
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.3 pH",
+          "tds": "175 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 15"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.3 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "175 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.2 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-DHN-31",
+        "name": "Gua Mining Colony Unit #02",
+        "district": "Dhanbad Mining Belt",
+        "status": "normal",
+        "statusLabel": "OPTIMAL",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 56,
+          "y": 55
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "6.9 pH",
+          "tds": "190 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 09"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "6.9 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "190 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.25 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-ESB-32",
+        "name": "Daltonganj Central Filtration",
+        "district": "East Singhbhum",
+        "status": "normal",
+        "statusLabel": "UV DISINFECTION",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 82,
+          "y": 80
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.0 pH",
+          "tds": "205 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 14"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.0 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "205 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.3 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-BOK-33",
+        "name": "Garhwa Sub-Divisional Outpost",
+        "district": "Bokaro Industrial Zone",
+        "status": "normal",
+        "statusLabel": "RO ACTIVE",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 64,
+          "y": 36
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.1 pH",
+          "tds": "220 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 02"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.1 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "220 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.15 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-DHN-34",
+        "name": "Chirkunda Intake Unit #02",
+        "district": "Dhanbad Rural",
+        "status": "normal",
+        "statusLabel": "OPTIMAL",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 50,
+          "y": 56
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.2 pH",
+          "tds": "235 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 01"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.2 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "235 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.2 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-RMG-35",
+        "name": "Loyabad Colliery Sensor Node",
+        "district": "Ramgarh",
+        "status": "normal",
+        "statusLabel": "UV DISINFECTION",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 44,
+          "y": 73
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.3 pH",
+          "tds": "250 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 05"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.3 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "250 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.25 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-HZB-36",
+        "name": "Sijua Mining Drainage Probe",
+        "district": "Hazaribagh Mining Sector",
+        "status": "normal",
+        "statusLabel": "RO ACTIVE",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 46,
+          "y": 32
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "6.9 pH",
+          "tds": "160 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 08"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "6.9 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "160 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.3 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-PAL-37",
+        "name": "Bhowra Washing Plant Node #01",
+        "district": "Palamu Mine Runoff",
+        "status": "normal",
+        "statusLabel": "OPTIMAL",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 33,
+          "y": 47
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.0 pH",
+          "tds": "175 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 03"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.0 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "175 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.15 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-RNC-38",
+        "name": "Bhurkunda Thermal Runoff Station",
+        "district": "Ranchi Urban Basin",
+        "status": "normal",
+        "statusLabel": "UV DISINFECTION",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 33,
+          "y": 54
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.1 pH",
+          "tds": "190 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 11"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.1 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "190 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.2 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-WSB-39",
+        "name": "Gola Sub-Basin Node #02",
+        "district": "West Singhbhum Outpost",
+        "status": "normal",
+        "statusLabel": "RO ACTIVE",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 70,
+          "y": 82
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.2 pH",
+          "tds": "205 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 17"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.2 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "205 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.25 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-GRD-40",
+        "name": "Ramgarh Cantonment Filter Station",
+        "district": "Giridih Colliery Belt",
+        "status": "normal",
+        "statusLabel": "OPTIMAL",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 65,
+          "y": 43
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.3 pH",
+          "tds": "220 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 06"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.3 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "220 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.3 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-DGH-41",
+        "name": "Mandu Mining Outpost #04",
+        "district": "Deoghar Water Works",
+        "status": "normal",
+        "statusLabel": "UV DISINFECTION",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 67,
+          "y": 20
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "6.9 pH",
+          "tds": "235 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 19"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "6.9 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "235 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.15 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-DMK-42",
+        "name": "Kujju Coal Seam Node #01",
+        "district": "Dumka Tribal Sector",
+        "status": "normal",
+        "statusLabel": "RO ACTIVE",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 82,
+          "y": 40
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.0 pH",
+          "tds": "250 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 22"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.0 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "250 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.2 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-KDR-43",
+        "name": "Tatanagar Water Matrix #03",
+        "district": "Koderma Mining Belt",
+        "status": "normal",
+        "statusLabel": "OPTIMAL",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 52,
+          "y": 16
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.1 pH",
+          "tds": "160 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 07"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.1 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "160 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.25 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-CTR-44",
+        "name": "Adityapur Industrial Station",
+        "district": "Chatra Catchment Zone",
+        "status": "normal",
+        "statusLabel": "UV DISINFECTION",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 22,
+          "y": 31
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.2 pH",
+          "tds": "175 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 12"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.2 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "175 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.3 NTU"
+          }
+        ]
+      },
+      {
+        "id": "JH-LTH-45",
+        "name": "Gamharia Technology Park Node",
+        "district": "Latehar Forest Station",
+        "status": "normal",
+        "statusLabel": "RO ACTIVE",
+        "sideLabel": "NORMAL",
+        "tone": "#4edea3",
+        "toneBg": "rgba(78,222,163,0.15)",
+        "pos": {
+          "x": 24,
+          "y": 66
+        },
+        "spotlight": {
+          "pb": "<0.001 ppm",
+          "ph": "7.3 pH",
+          "tds": "190 ppm",
+          "solenoid_shutoff_active": false,
+          "scada_channel": "SCADA CH: 15"
+        },
+        "metrics": [
+          {
+            "label": "pH Level",
+            "value": "7.3 pH"
+          },
+          {
+            "label": "TDS Inflow",
+            "value": "190 ppm"
+          },
+          {
+            "label": "Turbidity",
+            "value": "0.15 NTU"
+          }
+        ]
+      }
+    ],
+    "districts": [
+      "All Operational Districts (14)",
+      "Dhanbad",
+      "Bokaro",
+      "Ramgarh",
+      "West Singhbhum"
+    ],
+    "district_map_labels": [
+      {
+        "label": "PALAMU",
+        "x": 20,
+        "y": 44
+      },
+      {
+        "label": "BOKARO BASIN",
+        "x": 43,
+        "y": 38
+      },
+      {
+        "label": "RANCHI VALLEY",
+        "x": 34,
+        "y": 62
+      },
+      {
+        "label": "DHANBAD COAL BELT",
+        "x": 63,
+        "y": 51
+      },
+      {
+        "label": "E. SINGHBHUM",
+        "x": 68,
+        "y": 78
+      }
+    ],
+    "heavy_metal_contaminants": {
+      "pb": {
+        "key": "pb",
+        "label": "LEAD (PB)",
+        "ceiling": 0.01,
+        "value": 0.018,
+        "axisMax": 0.025,
+        "tone": "#ffb4ab",
+        "icon_name": "AlertTriangle",
+        "note": "+80% above safe limit"
+      },
+      "as": {
+        "key": "as",
+        "label": "ARSENIC (AS)",
+        "ceiling": 0.01,
+        "value": 0.004,
+        "axisMax": 0.015,
+        "tone": "#4edea3",
+        "icon_name": "CheckCircle2",
+        "note": "Safe parameters"
+      },
+      "f": {
+        "key": "f",
+        "label": "FLUORIDE (F-)",
+        "ceiling": 1.0,
+        "value": 0.82,
+        "axisMax": 1.25,
+        "tone": "#7bd0ff",
+        "icon_name": "Info",
+        "note": "Elevated in Palamu belt"
+      },
+      "cr": {
+        "key": "cr",
+        "label": "CHROMIUM (CR+6)",
+        "ceiling": 0.05,
+        "value": 0.012,
+        "axisMax": 0.07,
+        "tone": "#4edea3",
+        "icon_name": "CheckCircle2",
+        "note": "Trace levels only"
+      },
+      "fe": {
+        "key": "fe",
+        "label": "IRON (FE)",
+        "ceiling": 0.3,
+        "value": 0.34,
+        "axisMax": 0.5,
+        "tone": "#7bd0ff",
+        "icon_name": "Wrench",
+        "note": "Filtration backwash req."
+      }
+    }
+  },
+  "reports_and_analytics": {
+    "summary": {
+      "total_samples": 184320,
+      "compliance_percentage": 94.2,
+      "heavy_metal_spikes": 18,
+      "safe_litres_dispensed": "1,482,900 L",
+      "online_plants": "42/45",
+      "total_plants": 45,
+      "normal_plants": 42
+    },
+    "removal_efficiency": [
+      {
+        "day": "Day 01",
+        "dhanbad": 82,
+        "bokaro": 96,
+        "chaibasa": 98
+      },
+      {
+        "day": "Day 04",
+        "dhanbad": 85,
+        "bokaro": 96.5,
+        "chaibasa": 98.2
+      },
+      {
+        "day": "Day 07",
+        "dhanbad": 88,
+        "bokaro": 97,
+        "chaibasa": 98.4
+      },
+      {
+        "day": "Day 10",
+        "dhanbad": 91,
+        "bokaro": 97.2,
+        "chaibasa": 98.6
+      },
+      {
+        "day": "Day 14",
+        "dhanbad": 94,
+        "bokaro": 97.6,
+        "chaibasa": 98.8,
+        "spike": 94
+      },
+      {
+        "day": "Day 17",
+        "dhanbad": 95,
+        "bokaro": 97.8,
+        "chaibasa": 99
+      },
+      {
+        "day": "Day 21",
+        "dhanbad": 96.5,
+        "bokaro": 98.4,
+        "chaibasa": 99.1,
+        "spike2": 96.5
+      },
+      {
+        "day": "Day 24",
+        "dhanbad": 97.5,
+        "bokaro": 98.9,
+        "chaibasa": 99.3
+      },
+      {
+        "day": "Day 27",
+        "dhanbad": 98.5,
+        "bokaro": 99.3,
+        "chaibasa": 99.5
+      },
+      {
+        "day": "Day 30",
+        "dhanbad": 99.4,
+        "bokaro": 99.6,
+        "chaibasa": 99.7
+      }
+    ],
+    "audit_meta": {
+      "scada_engine": "v3.4.1",
+      "algorithm": "SHA-256 / RSA-4096",
+      "digital_token": "JSPCB-CERT-2026-88410",
+      "module": "DWSD-REP-2026-Q3",
+      "officer": {
+        "name": "Er. R. K. Mahato, M.Tech",
+        "title": "Chief executive engineer, PHED Ranchi HQ",
+        "initials": "RM"
+      }
+    },
+    "standards": {
+      "bis": {
+        "code": "BIS 10500:2012",
+        "label": "BIS 10500:2012 compliant runtime",
+        "lead_cutoff": 0.01
+      },
+      "who": {
+        "code": "WHO 2017 Guidelines",
+        "label": "WHO Guidelines 2017 compliant runtime",
+        "lead_cutoff": 0.01
+      }
+    }
+  }
+}

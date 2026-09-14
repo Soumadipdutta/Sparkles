@@ -662,7 +662,7 @@ function RemediationTrain() {
           n="01"
           tag="INTAKE"
           tone="cyan"
-          title="Surface Water Intake"
+          title="Mine Runoff Sump"
           sub="Pithead Drainage Collector"
           rows={[
             ["Turbidity:", "48.2 NTU"],
@@ -675,59 +675,59 @@ function RemediationTrain() {
           tag="SEDIMENT"
           tone="mint"
           title="Lamella Settler Tank"
-          sub="Alum &amp; Polyelectrolyte Dosing"
+          sub="Alum & Polyelectrolyte Dosing"
           rows={[
-            ["Insoluble Solids:", "92% Removed"],
+            ["Particulate:", "92% Removed"],
             ["Line Pressure:", "3.2 Bar"],
             ["Sludge Valve:", "AUTO-CYCLING"],
           ]}
         />
         <StageCard
           n="03"
-          tag="COAGULATION"
+          tag="ADSORPTION"
           tone="cyan"
-          title="Electrocoagulation"
+          title="GAC &amp; Chelating Resin"
           sub="Heavy Metal Ion Trapping"
           rows={[
-            ["Plate Life:", "84% Remaining"],
-            ["PP Bag Life:", "72% Remaining"],
-            ["Stagnation Time:", "15 min"],
+            ["Resin Saturation:", "88.4%"],
+            ["Bed Life:", "68% Remaining"],
+            ["Chelate Status:", "RECOVERY PEAK"],
           ]}
         />
         <StageCard
           n="04"
-          tag="CANISTER"
+          tag="MEMBRANE"
           tone="mint"
-          title="Vetiver Raft Canister"
-          sub="Heavy Metal and Biological Separation"
+          title="UF & RO Skid #2"
+          sub="Cross-Flow Desalination"
           rows={[
-            ["Heavy Metal Presence:", "0.002 ppm"],
-            ["pH:", "7.2 pH"],
-            ["Stagnation Time:", "20 min"],
+            ["Permeate Flux:", "420 L/h"],
+            ["Salt Rejection:", "98.4%"],
+            ["Differential P:", "1.8 Bar"],
           ]}
         />
         <StageCard
           n="05"
-          tag="FILTRATION"
+          tag="IRRADIATION"
           tone="mint"
-          title="Arsenic Filtration Unit"
-          sub="Highflow Cartridges"
+          title="UV-C Germicidal Rig"
+          sub="Dual In-Line Quartz Sleeves"
           rows={[
-            ["Arsenic Content:", "0.003 ppm"],
-            ["Cartridge Life:", "82% Remaining"],
-            ["Internal Pressure:", "2.4 Bar"],
+            ["UV Intensity:", "42 mJ/cm²"],
+            ["Lamp Runtime:", "1,420 / 8,000h"],
+            ["Optical Sensor:", "CLEAN (100%)"],
           ]}
         />
         <StageCard
           n="06 · OUTLET"
-          tag="FINAL STAGE"
-          tone="cyan"
-          title="Terra Filter Bed"
-          sub="Final Filtration Stage"
+          tag="LOCKED"
+          locked
+          title="Cutoff Solenoid #SV-04"
+          sub="Automated Isolation Safeguard"
           rows={[
-            ["Media Left:", "89%"],
-            ["pH:", "7.1 pH"],
-            ["Internal Pressure:", "1.8 Bar"],
+            ["Valve State:", "CLOSED (TRIPPED)"],
+            ["Hold Pressure:", "4.8 Bar Sealed"],
+            ["Safe Reservoir:", "PROTECTED"],
           ]}
         />
       </div>
@@ -1064,33 +1064,33 @@ function OpticalDiagnostics() {
 function ConsumablesPanel() {
   const items = [
     {
-      name: "Arsenic Filtration Cartridge",
-      right: "312h runtime remaining",
-      pct: 82,
+      name: "Resin Chelating Bed (Pb/Fe Scavenger)",
+      right: "312h until regen",
+      pct: 68,
       color: c.cyan,
       meta: [
         ["Installed:", "12-Jan-2025"],
-        ["Capacity:", "82% remaining"],
+        ["Capacity:", "68% remaining"],
       ],
     },
     {
-      name: "Vetiver Grass",
-      right: "Optimal Biomass",
-      pct: 78,
+      name: "Spiral-Wound RO Membrane Skid",
+      right: "Optimal Flux",
+      pct: 82,
       color: c.mint,
       meta: [
-        ["Biomass Index:", "2.1"],
-        ["", "78% Active Surface"],
+        ["Fouling Index (SDI):", "2.1"],
+        ["", "82% Clean Surface"],
       ],
     },
     {
-      name: "Terra Filtration Media",
-      right: "89% Media Level",
-      pct: 89,
+      name: "Liquid Alum Coagulant Reservoir",
+      right: "42 Liters",
+      pct: 35,
       color: c.cyan,
       meta: [
-        ["Media Depth:", "1.2 m"],
-        ["Est. Runtime:", "120 Days"],
+        ["Dosing rate:", "12 mL/min"],
+        ["Est. Runtime:", "58 hrs"],
       ],
     },
   ];

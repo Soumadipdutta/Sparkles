@@ -1,7 +1,7 @@
 const API_BASE_URL = "http://127.0.0.1:8000/api";
 
-export async function fetchDashboardData(deviceId = "JH-DHN-04") {
-  const response = await fetch(`${API_BASE_URL}/dashboard?device_id=${encodeURIComponent(deviceId)}`);
+export async function fetchDashboardData() {
+  const response = await fetch(`${API_BASE_URL}/dashboard`);
   if (!response.ok) {
     throw new Error(`API returned ${response.status}`);
   }
@@ -10,14 +10,6 @@ export async function fetchDashboardData(deviceId = "JH-DHN-04") {
 
 export async function fetchStatewideOverviewData() {
   const response = await fetch(`${API_BASE_URL}/statewide-overview`);
-  if (!response.ok) {
-    throw new Error(`API returned ${response.status}`);
-  }
-  return await response.json();
-}
-
-export async function fetchReportsAndAnalyticsData() {
-  const response = await fetch(`${API_BASE_URL}/reports-and-analytics`);
   if (!response.ok) {
     throw new Error(`API returned ${response.status}`);
   }
@@ -44,18 +36,6 @@ export async function updateSettingsData(payload) {
   return await response.json();
 }
 
-export async function dispatchAlertAction(payload) {
-  const response = await fetch(`${API_BASE_URL}/alerts/action`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
-  if (!response.ok) {
-    throw new Error(`API returned ${response.status}`);
-  }
-  return await response.json();
-}
-
 export async function triggerSystemBackup() {
   const response = await fetch(`${API_BASE_URL}/settings/backup`, {
     method: "POST",
@@ -68,6 +48,30 @@ export async function triggerSystemBackup() {
 
 export async function fetchReportsSummary() {
   const response = await fetch(`${API_BASE_URL}/reports/summary`);
+  if (!response.ok) throw new Error(`API returned ${response.status}`);
+  return await response.json();
+}
+
+export async function fetchReportsContaminants() {
+  const response = await fetch(`${API_BASE_URL}/reports/contaminants`);
+  if (!response.ok) throw new Error(`API returned ${response.status}`);
+  return await response.json();
+}
+
+export async function fetchReportsTrends() {
+  const response = await fetch(`${API_BASE_URL}/reports/trends`);
+  if (!response.ok) throw new Error(`API returned ${response.status}`);
+  return await response.json();
+}
+
+export async function fetchReportsHeatmap() {
+  const response = await fetch(`${API_BASE_URL}/reports/heatmap`);
+  if (!response.ok) throw new Error(`API returned ${response.status}`);
+  return await response.json();
+}
+
+export async function fetchRecentReports() {
+  const response = await fetch(`${API_BASE_URL}/reports/recent`);
   if (!response.ok) throw new Error(`API returned ${response.status}`);
   return await response.json();
 }
@@ -93,16 +97,3 @@ export async function downloadReportFile(filters = {}) {
   }
   return await response.blob();
 }
-
-export async function appendTelemetryLog(payload) {
-  const response = await fetch(`${API_BASE_URL}/telemetry/log`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
-  if (!response.ok) {
-    throw new Error(`API returned ${response.status}`);
-  }
-  return await response.json();
-}
-

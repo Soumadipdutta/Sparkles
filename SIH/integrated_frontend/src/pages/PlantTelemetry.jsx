@@ -1,4 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  fetchDashboardData,
+  fetchStatewideOverviewData,
+  appendTelemetryLog,
+  dispatchAlertAction
+} from "../services/api";
 
 const c = {
   bg: "#0a0e14",
@@ -17,14 +24,17 @@ const c = {
   redBg2: "#2a1015",
 };
 
-function TopBar() {
-  const [tab, setTab] = useState("Plant Telemetry");
+function TopBar({ activeTab = "Plant Telemetry" }) {
+  const navigate = useNavigate();
+  const currentPath = window.location.pathname;
+
   const tabs = [
-    "Statewide Overview",
-    "Plant Telemetry",
-    "Analytics & Reports",
-    "Critical Alerts & Incident Response",
+    { label: "Statewide Overview", path: "/statewide-overview", altPath: "/toyam/statewide" },
+    { label: "Plant Telemetry", path: "/plant-telemetry", altPath: "/toyam/plant" },
+    { label: "Analytics & Reports", path: "/analytics-and-reports", altPath: "/toyam/analytics" },
+    { label: "Critical Alerts & Incident Response", path: "/critical-alerts", altPath: "/toyam/alerts" },
   ];
+
   return (
     <div
       style={{
@@ -35,6 +45,7 @@ function TopBar() {
         borderBottom: `1px solid ${c.border}`,
         flexWrap: "wrap",
         gap: 12,
+        background: c.panel,
       }}
     >
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -50,10 +61,13 @@ function TopBar() {
             justifyContent: "center",
             color: c.cyan,
             fontSize: 16,
+            cursor: "pointer",
           }}
+          onClick={() => navigate("/statewide-overview")}
         >
           ◆
         </div>
+
         <div>
           <div style={{ display: "flex", alignItems: "baseline", gap: 10 }}>
             <span
@@ -63,10 +77,13 @@ function TopBar() {
                 fontSize: 19,
                 letterSpacing: 1,
                 color: c.text,
+                cursor: "pointer",
               }}
+              onClick={() => navigate("/statewide-overview")}
             >
               TOYAM
             </span>
+
             <span
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
@@ -78,12 +95,12 @@ function TopBar() {
                 padding: "2px 6px",
               }}
             >
-              JH-DW&amp;SD
+              JH-DW&SD
             </span>
           </div>
+
           <div style={{ fontSize: 11.5, color: c.sub, marginTop: 2 }}>
-            State Water Quality &amp; Purification Monitoring Portal — Govt of
-            Jharkhand
+            State Water Quality & Purification Monitoring Portal — Govt of Jharkhand
           </div>
         </div>
       </div>
@@ -94,28 +111,32 @@ function TopBar() {
       </div>
 
       <nav style={{ display: "flex", gap: 4, flexWrap: "wrap" }}>
-        {tabs.map((t) => (
-          <button
-            key={t}
-            onClick={() => setTab(t)}
-            style={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: 11.5,
-              padding: "10px 14px",
-              borderRadius: 6,
-              border: "none",
-              cursor: "pointer",
-              background: tab === t ? c.cyan : "transparent",
-              color: tab === t ? "#04222a" : c.sub,
-              fontWeight: tab === t ? 700 : 500,
-              lineHeight: 1.3,
-              maxWidth: 120,
-              textAlign: "left",
-            }}
-          >
-            {t}
-          </button>
-        ))}
+        {tabs.map((tab) => {
+          const active = currentPath === tab.path || currentPath === tab.altPath || activeTab === tab.label;
+
+          return (
+            <button
+              key={tab.label}
+              onClick={() => navigate(tab.path)}
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 11.5,
+                padding: "10px 14px",
+                borderRadius: 6,
+                border: "none",
+                cursor: "pointer",
+                background: active ? c.cyan : "transparent",
+                color: active ? "#04222a" : c.sub,
+                fontWeight: active ? 700 : 500,
+                lineHeight: 1.3,
+                maxWidth: 120,
+                textAlign: "left",
+              }}
+            >
+              {tab.label}
+            </button>
+          );
+        })}
       </nav>
     </div>
   );
@@ -158,7 +179,7 @@ function Badge({ children, tone = "mint" }) {
     amber: { bg: "#2c220f", fg: c.amber, bd: "#4a3a1a" },
     red: { bg: c.redBg, fg: c.red, bd: c.borderRed },
   };
-  const s = map[tone];
+  const s = map[tone] || map.mint;
   return (
     <span
       style={{
@@ -178,18 +199,85 @@ function Badge({ children, tone = "mint" }) {
   );
 }
 
-function HeaderPanel() {
+function HeaderPanel({ deviceId, setDeviceId, allPlants, data }) {
+  const [overrideActive, setOverrideActive] = useState(false);
+  const [operationStatus, setOperationStatus] = useState("");
+
+  const plantInfo = data?.info || {};
+  const systemInfo = data?.system || {};
+
+  const unitTitle = plantInfo.name || `Toyam Unit #${deviceId.split("-").pop() || "04"} — Jharia Colliery Sector, Dhanbad District`;
+  const unitDistrict = plantInfo.sub_basin || "Coal Belt Sub-basin Remediation Node • High-Metal Contamination Threat Sector B-12";
+  const geoCoords = plantInfo.coordinates || "Geo: 23.7428° N, 86.4116° E";
+
+  const handleManualOverride = async () => {
+    const nextState = !overrideActive;
+    setOverrideActive(nextState);
+    const msg = nextState ? "MANUAL OVERRIDE ENABLED" : "MANUAL OVERRIDE DISABLED";
+    setOperationStatus(msg);
+    try {
+      await dispatchAlertAction({ action: "manual_override", device_id: deviceId, override: nextState });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleFlush = async () => {
+    setOperationStatus("FLUSH CHAMBER COMMAND SENT");
+    try {
+      await dispatchAlertAction({ action: "flush_chamber", device_id: deviceId });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleRecalibrate = async () => {
+    setOperationStatus("SENSOR ARRAY RECALIBRATION STARTED");
+    try {
+      await dispatchAlertAction({ action: "recalibrate", device_id: deviceId });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleExport = () => {
+    const logs = [
+      ["TIMESTAMP", "SUBSYSTEM", "EVENT DESCRIPTION", "PARAMETER VALUE", "ACTION STATE"],
+      ["14:26:08", "VALVE #SV-04", "Automated isolation: Pb limit breach", "0.042 mg/L", "SHUTDOWN"],
+      ["14:25:52", "SPECTRO-XRF", "Spike detected in raw mine intake bed", "0.038 mg/L", "ALERT LEVEL 2"],
+      ["14:10:00", "PRE-SEDIMENT", "Automatic bottom sludge drain purge completed", "45 Liters", "SUCCESS"],
+      ["13:45:12", "UV-REACTOR", "Quartz sleeve mechanical wiper sweep finished", "100% Trans.", "NOMINAL"],
+      ["12:00:00", "SYSTEM-CLK", "Periodic state telemetry synchronization to Ranchi HQ", "Ping: 34ms", "SYNCED"],
+    ];
+
+    const csv = logs
+      .map((row) => row.map((cell) => `"${String(cell).replace(/"/g, '""')}"`).join(","))
+      .join("\n");
+
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `toyam-${deviceId.toLowerCase()}-incident-log.csv`;
+    link.click();
+    URL.revokeObjectURL(url);
+
+    setOperationStatus("TELEMETRY LOG EXPORTED");
+  };
+
   return (
-    <div style={{ padding: "20px 24px 0" }}>
+    <div style={{ width: "100%", padding: "20px 24px 0" }}>
       <div
         style={{
+          width: "100%",
           display: "flex",
           justifyContent: "space-between",
+          alignItems: "center",
           flexWrap: "wrap",
-          gap: 16,
+          gap: 24,
         }}
       >
-        <div>
+        <div style={{ flex: "1 1 600px" }}>
           <div
             style={{
               display: "flex",
@@ -199,7 +287,34 @@ function HeaderPanel() {
               flexWrap: "wrap",
             }}
           >
-            <Badge tone="cyan">UNIT-JH-DHN-04</Badge>
+            {/* Plant Switcher Dropdown */}
+            {allPlants && allPlants.length > 0 ? (
+              <select
+                value={deviceId}
+                onChange={(e) => setDeviceId(e.target.value)}
+                style={{
+                  background: "#0c2530",
+                  color: c.cyan,
+                  border: "1px solid #1a3a45",
+                  borderRadius: 4,
+                  padding: "3px 8px",
+                  fontSize: 11,
+                  fontFamily: "'JetBrains Mono', monospace",
+                  fontWeight: 700,
+                  outline: "none",
+                  cursor: "pointer",
+                }}
+              >
+                {allPlants.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    UNIT-{p.id} ({p.name})
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <Badge tone="cyan">UNIT-{deviceId}</Badge>
+            )}
+
             <span
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
@@ -207,13 +322,18 @@ function HeaderPanel() {
                 color: c.sub,
               }}
             >
-              Geo: 23.7428° N, 86.4116° E
+              {geoCoords}
             </span>
+
             <Badge tone="mint">Solar-Hybrid (88% Bat)</Badge>
           </div>
+
           <div style={{ marginBottom: 10 }}>
-            <Badge tone="red">● SHUTOFF VALVE ENGAGED</Badge>
+            <Badge tone={systemInfo.status === "cutoff" || overrideActive ? "red" : "mint"}>
+              ● {overrideActive ? "MANUAL OVERRIDE ENGAGED" : systemInfo.statusLabel || "SHUTOFF VALVE ENGAGED"}
+            </Badge>
           </div>
+
           <h1
             style={{
               fontFamily: "'Space Grotesk', sans-serif",
@@ -221,33 +341,59 @@ function HeaderPanel() {
               fontWeight: 600,
               margin: "0 0 6px",
               color: c.text,
-              maxWidth: 640,
+              maxWidth: 800,
+              lineHeight: 1.1,
             }}
           >
-            Toyam Unit #04 — Jharia Colliery Sector, Dhanbad District
+            {unitTitle}
           </h1>
-          <div style={{ color: c.sub, fontSize: 13.5 }}>
-            Coal Belt Sub-basin Remediation Node • High-Metal Contamination
-            Threat Sector B-12
-          </div>
+
+          <div style={{ color: c.sub, fontSize: 13.5 }}>{unitDistrict}</div>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 8,
+            flex: "0 0 auto",
+          }}
+        >
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-            <ActionBtn label="MANUAL OVERRIDE" icon="🔒" danger />
-            <ActionBtn label="FLUSH CHAMBER" icon="📷" />
-            <ActionBtn label="RECALIBRATE ARRAY" icon="⚙" />
+            <ActionBtn
+              label={overrideActive ? "DISABLE OVERRIDE" : "MANUAL OVERRIDE"}
+              icon="🔒"
+              danger={!overrideActive}
+              onClick={handleManualOverride}
+            />
+            <ActionBtn label="FLUSH CHAMBER" icon="📷" onClick={handleFlush} />
+            <ActionBtn label="RECALIBRATE ARRAY" icon="⚙" onClick={handleRecalibrate} />
           </div>
-          <ActionBtn label="EXPORT LOGS" icon="⬇" full outline />
+
+          <ActionBtn label="EXPORT LOGS" icon="⬇" full outline onClick={handleExport} />
+          {operationStatus && (
+            <div
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 10.5,
+                color: overrideActive ? c.red : c.mint,
+                textAlign: "right",
+                marginTop: 2,
+              }}
+            >
+              ● {operationStatus}
+            </div>
+          )}
         </div>
       </div>
     </div>
   );
 }
 
-function ActionBtn({ label, icon, danger, outline, full }) {
+function ActionBtn({ label, icon, danger, outline, full, onClick }) {
   return (
     <button
+      onClick={onClick}
       style={{
         fontFamily: "'JetBrains Mono', monospace",
         fontSize: 11.5,
@@ -276,7 +422,10 @@ function ActionBtn({ label, icon, danger, outline, full }) {
   );
 }
 
-function AlertBanner() {
+function AlertBanner({ data }) {
+  const spotlight = data?.spotlight || {};
+  const pbVal = spotlight.pb || "0.042 mg/L";
+
   return (
     <div style={{ padding: "18px 24px 0" }}>
       <div
@@ -327,7 +476,7 @@ function AlertBanner() {
                   letterSpacing: 0.3,
                 }}
               >
-                LEAD (Pb) SURGE DETECTED (0.042 mg/L)
+                LEAD (Pb) SURGE DETECTED ({pbVal})
               </span>
               <Badge tone="red">4.2X WHO LIMIT</Badge>
             </div>
@@ -442,7 +591,9 @@ function SensorCard({ label, badge, tone, value, unit, sub, extra, bar }) {
   );
 }
 
-function SensorGrid() {
+function SensorGrid({ data }) {
+  const spotlight = data?.spotlight || {};
+
   return (
     <div
       style={{
@@ -456,7 +607,7 @@ function SensorGrid() {
         label="PH SENSOR #01"
         badge="OPTIMAL"
         tone="mint"
-        value="6.84"
+        value={spotlight.ph ? spotlight.ph.replace(" pH", "") : "6.84"}
         unit="pH"
         bar="55%"
         sub="Range: 6.5 – 8.5   Δ +0.02/h"
@@ -475,7 +626,7 @@ function SensorGrid() {
         label="TOTAL SOLIDS (TDS)"
         badge="SAFE"
         tone="mint"
-        value="312"
+        value={spotlight.tds ? spotlight.tds.replace(" ppm", "") : "312"}
         unit="PPM"
         bar="40%"
         sub="Limit < 500 PPM BIS IS 10500"
@@ -503,7 +654,7 @@ function SensorGrid() {
         label="HEAVY METALS (XRF)"
         badge="BREACH"
         tone="red"
-        value="0.042"
+        value={spotlight.pb ? spotlight.pb.replace(" ppm", "") : "0.042"}
         unit="Pb mg/L"
         bar="95%"
         sub="Fe: 0.62   As: 0.004   F: 0.80 ↑"
@@ -675,7 +826,7 @@ function RemediationTrain() {
           tag="SEDIMENT"
           tone="mint"
           title="Lamella Settler Tank"
-          sub="Alum &amp; Polyelectrolyte Dosing"
+          sub="Alum & Polyelectrolyte Dosing"
           rows={[
             ["Insoluble Solids:", "92% Removed"],
             ["Line Pressure:", "3.2 Bar"],
@@ -736,7 +887,6 @@ function RemediationTrain() {
 }
 
 function TelemetryChart() {
-  // Build an SVG line chart approximating the spike shape shown in the screenshot
   const w = 640;
   const h = 230;
   const padL = 40;
@@ -747,17 +897,14 @@ function TelemetryChart() {
   const xForHour = (hr) => padL + (hr / 24) * plotW;
   const yFor = (v, max) => 10 + plotH - (v / max) * plotH;
 
-  // Lead (Pb) curve - spikes hugely around 14:26
   const leadPts = [
     [0, 2], [4, 2], [8, 3], [12, 4], [13.5, 5], [14.2, 8], [14.43, 100],
     [14.6, 42], [15.2, 62], [16, 78], [16.6, 60], [17.2, 38], [18, 22],
   ];
-  // Turbidity curve
   const turbPts = [
     [0, 8], [4, 8], [8, 9], [12, 10], [13.5, 11], [14.2, 14], [14.43, 46],
     [15, 40], [15.6, 30], [16.3, 22], [17, 16], [18, 12],
   ];
-  // pH curve - relatively flat
   const phPts = [
     [0, 14], [4, 14.5], [8, 15], [12, 15], [14, 15.5], [14.43, 16],
     [15, 15.5], [16, 15], [17, 14.5], [18, 14.5],
@@ -823,7 +970,6 @@ function TelemetryChart() {
       </div>
 
       <svg viewBox={`0 0 ${w} ${h}`} style={{ width: "100%", height: "auto" }}>
-        {/* gridlines */}
         {[0, 4, 8, 12, 16, 20, 24].map((hr) => (
           <line
             key={hr}
@@ -835,7 +981,6 @@ function TelemetryChart() {
             strokeWidth="1"
           />
         ))}
-        {/* threshold line */}
         <line
           x1={padL}
           x2={w - 10}
@@ -849,7 +994,6 @@ function TelemetryChart() {
           TDS SAFETY THRESHOLD: 500 PPM
         </text>
 
-        {/* shaded region after spike */}
         <rect
           x={xForHour(14.26)}
           y={10}
@@ -862,7 +1006,6 @@ function TelemetryChart() {
         <path d={toPath(turbPts, turbMax)} fill="none" stroke={c.cyan} strokeWidth="2" />
         <path d={toPath(leadPts, leadMax)} fill="none" stroke={c.red} strokeWidth="2.2" />
 
-        {/* now marker */}
         <line
           x1={spikeX}
           x2={spikeX}
@@ -873,7 +1016,6 @@ function TelemetryChart() {
         />
         <circle cx={spikeX} cy={yFor(100, leadMax)} r="4" fill={c.red} />
 
-        {/* annotation box */}
         <g>
           <rect x={spikeX + 8} y={20} width={190} height={40} fill="#180a0c" stroke={c.borderRed} rx="4" />
           <text x={spikeX + 16} y={34} fill="#ffb3ab" fontSize="9.5" fontFamily="'JetBrains Mono', monospace" fontWeight="700">
@@ -884,7 +1026,6 @@ function TelemetryChart() {
           </text>
         </g>
 
-        {/* x axis labels */}
         {[
           [0, "00:00"],
           [4, "04:00"],
@@ -920,8 +1061,7 @@ function TelemetryChart() {
         }}
       >
         <span>
-          Sampling Interval: 1.0s continuous stream • Electro-optical &amp;
-          Absorption Spectrophotometry
+          Sampling Interval: 1.0s continuous stream • Electro-optical & Absorption Spectrophotometry
         </span>
         <span style={{ color: c.mint }}>99.98% Telemetry Packet Delivery</span>
       </div>
@@ -978,7 +1118,7 @@ function OpticalDiagnostics() {
           color: c.text,
         }}
       >
-        Intake Sump Observation
+        Surface Water Intake Observation
       </h3>
 
       <div
@@ -988,11 +1128,9 @@ function OpticalDiagnostics() {
           overflow: "hidden",
           border: `1px solid ${c.border}`,
           height: 200,
-          background:
-            "linear-gradient(180deg,#16202c 0%,#0d1520 55%,#0a1018 100%)",
+          background: "linear-gradient(180deg,#16202c 0%,#0d1520 55%,#0a1018 100%)",
         }}
       >
-        {/* simple stylized plant illustration */}
         <svg viewBox="0 0 400 200" style={{ width: "100%", height: "100%" }}>
           <polygon points="0,140 90,90 200,110 300,80 400,120 400,200 0,200" fill="#141d28" />
           <rect x="60" y="95" width="220" height="75" rx="4" fill="#1a2735" stroke="#233247" />
@@ -1037,7 +1175,7 @@ function OpticalDiagnostics() {
 
       <div style={{ marginTop: 14 }}>
         {[
-          ["Intake Sump Depth:", "3.82 m (78% Cap)"],
+          ["Intake Depth:", "3.82 m (78% Cap)"],
           ["Backwash Waste Drain:", "Direct to Tailings Pond"],
           ["Distribution Reservoir:", "14,200 L Reserve Safe"],
         ].map(([k, v]) => (
@@ -1062,6 +1200,12 @@ function OpticalDiagnostics() {
 }
 
 function ConsumablesPanel() {
+  const [dispatchRequested, setDispatchRequested] = useState(false);
+
+  const handleDispatch = () => {
+    setDispatchRequested(true);
+  };
+
   const items = [
     {
       name: "Arsenic Filtration Cartridge",
@@ -1124,6 +1268,7 @@ function ConsumablesPanel() {
           CONSUMABLES LIFECYCLE
         </span>
         <button
+          onClick={handleDispatch}
           style={{
             background: "none",
             border: "none",
@@ -1134,7 +1279,7 @@ function ConsumablesPanel() {
             fontWeight: 700,
           }}
         >
-          REQUEST DISPATCH
+          {dispatchRequested ? "DISPATCH REQUESTED ✓" : "REQUEST DISPATCH"}
         </button>
       </div>
       <h3
@@ -1146,7 +1291,7 @@ function ConsumablesPanel() {
           color: c.text,
         }}
       >
-        Filter &amp; Chemical Stocks
+        Filter & Chemical Stocks
       </h3>
 
       {items.map((it) => (
@@ -1225,7 +1370,10 @@ function ConsumablesPanel() {
   );
 }
 
-function IncidentLog() {
+function IncidentLog({ deviceId }) {
+  const [note, setNote] = useState("");
+  const [notes, setNotes] = useState([]);
+
   const rows = [
     {
       t: "14:26:08",
@@ -1269,6 +1417,23 @@ function IncidentLog() {
       tone: "mint",
     },
   ];
+
+  const handleAppendLog = async () => {
+    if (!note.trim()) return;
+    const text = note.trim();
+    setNotes((prev) => [...prev, text]);
+    setNote("");
+
+    try {
+      await appendTelemetryLog({
+        device_id: deviceId,
+        event: `Technician Field Note: ${text}`,
+        status: "RECORDED",
+      });
+    } catch (e) {
+      console.error("Error appending log to Firebase:", e);
+    }
+  };
 
   return (
     <div
@@ -1381,6 +1546,11 @@ function IncidentLog() {
       >
         <span style={{ color: c.sub }}>📝</span>
         <input
+          value={note}
+          onChange={(e) => setNote(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") handleAppendLog();
+          }}
           placeholder="Add field technician observation note for Unit #04..."
           style={{
             flex: 1,
@@ -1392,6 +1562,7 @@ function IncidentLog() {
           }}
         />
         <button
+          onClick={handleAppendLog}
           style={{
             background: c.cyan,
             border: "none",
@@ -1408,6 +1579,23 @@ function IncidentLog() {
           APPEND LOG
         </button>
       </div>
+
+      {notes.map((n, index) => (
+        <div
+          key={index}
+          style={{
+            marginTop: 8,
+            padding: "8px 10px",
+            border: `1px solid ${c.border}`,
+            borderRadius: 5,
+            fontFamily: "'JetBrains Mono', monospace",
+            fontSize: 10.5,
+            color: c.text,
+          }}
+        >
+          <span style={{ color: c.cyan }}>TECH NOTE:</span> {n}
+        </div>
+      ))}
     </div>
   );
 }
@@ -1437,11 +1625,32 @@ function Footer() {
 }
 
 export default function PlantTelemetry() {
+  const [deviceId, setDeviceId] = useState("JH-DHN-04");
+  const [data, setData] = useState(null);
+  const [allPlants, setAllPlants] = useState([]);
+
+  useEffect(() => {
+    fetchDashboardData(deviceId)
+      .then((res) => setData(res))
+      .catch((err) => console.error("Error loading device telemetry:", err));
+  }, [deviceId]);
+
+  useEffect(() => {
+    fetchStatewideOverviewData()
+      .then((res) => {
+        if (res?.plants && res.plants.length > 0) {
+          setAllPlants(res.plants);
+        }
+      })
+      .catch((err) => console.error("Error loading plants list:", err));
+  }, []);
+
   return (
     <div
       style={{
-        background: c.bg,
+        width: "100%",
         minHeight: "100vh",
+        background: c.bg,
         color: c.text,
         fontFamily: "'Inter', -apple-system, sans-serif",
       }}
@@ -1451,9 +1660,9 @@ export default function PlantTelemetry() {
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
       />
       <TopBar />
-      <HeaderPanel />
-      <AlertBanner />
-      <SensorGrid />
+      <HeaderPanel deviceId={deviceId} setDeviceId={setDeviceId} allPlants={allPlants} data={data} />
+      <AlertBanner data={data} />
+      <SensorGrid data={data} />
       <RemediationTrain />
 
       <div style={{ padding: "22px 24px 0", display: "flex", gap: 18, flexWrap: "wrap" }}>
@@ -1463,7 +1672,7 @@ export default function PlantTelemetry() {
 
       <div style={{ padding: "18px 24px 0", display: "flex", gap: 18, flexWrap: "wrap" }}>
         <ConsumablesPanel />
-        <IncidentLog />
+        <IncidentLog deviceId={deviceId} />
       </div>
 
       <Footer />

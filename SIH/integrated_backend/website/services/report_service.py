@@ -165,15 +165,17 @@ def get_heatmap():
     warn_count = sum(1 for item in trends_24h if item.get("turbidity", 2) >= 5 or item.get("tds", 400) > 600)
     crit_count = max(0, len(trends_24h) - safe_count - warn_count)
 
+    from datetime import datetime, timedelta
+    today = datetime.now()
+    data = []
+    base_counts = [(21, 2, 0), (20, 3, 1), (22, 1, 0), (19, 4, 1), (max(15, safe_count * 3), max(1, warn_count), crit_count)]
+    for idx, (s, w, c) in enumerate(base_counts):
+        d_str = (today - timedelta(days=4 - idx)).strftime("%Y-%m-%d")
+        data.append({"date": d_str, "safe": s, "warning": w, "critical": c})
+
     return {
         "success": True,
-        "data": [
-            {"date": "2026-08-24", "safe": 21, "warning": 2, "critical": 0},
-            {"date": "2026-08-25", "safe": 20, "warning": 3, "critical": 1},
-            {"date": "2026-08-26", "safe": 22, "warning": 1, "critical": 0},
-            {"date": "2026-08-27", "safe": 19, "warning": 4, "critical": 1},
-            {"date": "2026-08-28", "safe": max(15, safe_count * 3), "warning": max(1, warn_count), "critical": crit_count},
-        ],
+        "data": data,
     }
 
 
@@ -182,25 +184,31 @@ def get_recent_reports():
     info = device_data.get("info", {})
     village_name = info.get("village", "XYZ")
 
+    from datetime import datetime, timedelta
+    today = datetime.now()
+    d1 = today.strftime("%d %b %Y")
+    d2 = (today - timedelta(days=1)).strftime("%d %b %Y")
+    d3 = (today - timedelta(days=4)).strftime("%d %b %Y")
+
     return [
         {
             "id": 1,
             "name": f"Weekly Water Quality Report - {village_name}",
-            "date": "28 Aug 2026",
+            "date": d1,
             "type": "Weekly",
             "status": "Generated",
         },
         {
             "id": 2,
             "name": f"Water Safety Analysis - {village_name}",
-            "date": "27 Aug 2026",
+            "date": d2,
             "type": "Analysis",
             "status": "Generated",
         },
         {
             "id": 3,
             "name": f"Monthly Compliance Audit - {village_name}",
-            "date": "24 Aug 2026",
+            "date": d3,
             "type": "Monthly",
             "status": "Generated",
         },
